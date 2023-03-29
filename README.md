@@ -1,4 +1,4 @@
-# michellerenee-portfolio
+# Michelle Renee Portfolio
 
 ## Table of contents
 
@@ -16,7 +16,8 @@
 
 ## Overview
 
-Welcome to my Portfolio. 
+Welcome to my Portfolio.
+It is a work in progress.
 
 ### The challenge
 
@@ -50,7 +51,7 @@ Users should be able to:
 
 ### What I learned
 
-- How to setup the DNS to point to GitHubPages to host this site. This was a bit of a hassels and i ran into several issues, so it was a lot of informative research in trouble shooting.
+- How to setup the DNS to point to GitHubPages to host this site. This was a bit of a hassels and I ran into several issues, so it was a lot of informative research in trouble shooting.
 
 ### Continued development
 
