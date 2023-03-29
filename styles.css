@@ -113,3 +113,15 @@ svg:hover path {
     text-align: center;
     margin-block-start: 16rem;
 }
+
+.header__contact {
+    font-family: var(--ff-primary);
+    text-decoration: none;
+    color: #fff;
+    border-bottom: 1px solid var(--foam-green);
+}
+
+.contact-me:hover {
+    color: var(--foam-green);
+    transition: 250ms ease-in-out;
+}
