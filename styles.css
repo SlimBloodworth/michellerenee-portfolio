@@ -114,10 +114,10 @@ svg:hover path {
     margin-block-start: 16rem;
 }
 
-.header__contact {
-    font-family: var(--ff-primary);
+.hero__contact {
+    font-family: var(--ff-secondary);
     text-decoration: none;
-    color: #fff;
+    color: #d9d9d9;
     border-bottom: 1px solid var(--foam-green);
 }
 
