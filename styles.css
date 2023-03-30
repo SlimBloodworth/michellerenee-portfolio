@@ -83,17 +83,8 @@ p {
     transition: 250ms ease-in-out;
 }
 
-.header__social-container {
+.primary-nav__links-container {
     display: inline-block;
-}
-
-.header__social-icons {
-    margin: 0 25px 0 25px;
-}
-
-svg:hover path {
-    fill: var(--foam-green);
-    transition: 250ms ease-in-out;
 }
 
 
@@ -123,5 +114,43 @@ svg:hover path {
 
 .contact-me:hover {
     color: var(--foam-green);
+    transition: 250ms ease-in-out;
+}
+
+
+/*FOOTER*/
+
+.footer {
+    border-top: 1px solid #d9d9d9;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    gap: 20px 0px;
+    margin-top: 20px;
+}
+
+.footer__contact,
+.footer__connect {
+    margin-top: 20px;
+}
+
+.footer__title {
+    color: #d9d9d9;
+    line-height: 1;
+    font-size: 1.5rem;
+}
+
+.footer__social-container {
+    display: inline-block;
+}
+
+.footer__social-icons {
+    margin: 0 25px 0 25px;
+    text-decoration: none;
+}
+
+svg:hover path {
+    fill: var(--foam-green);
     transition: 250ms ease-in-out;
 }
