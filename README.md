@@ -30,11 +30,9 @@ Users should be able to:
 
 ![](./screenshot.jpg)
 
-
-
 ### Links
 
-- Live Site URL: [michellerenee.dev](https://michellerenee.dev)
+- Live Site: [michellerenee.dev](https://michellerenee.dev)
 
 ## My process
 
