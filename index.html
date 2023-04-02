@@ -102,12 +102,34 @@
             <!-- CONTACT FORM  -->
             <div class="footer__contact">
                 <p class="footer__title">contact</p>
+                <form action="" class="contact-form">
+                    <div>
+                        <label for="first-name">First Name</label>
+                        <input type="text" id="first-name" name="first-name" placeholder="first name" required>
+                    </div>
+                    <div>
+                        <label for="last-name">Last Name</label>
+                        <input type="text" id="last-name" name="last-name" placeholder="last name" required>
+                    </div>
+                    <div>
+                        <label for="email">@</label>
+                        <input type="email" id="email" name="email" placeholder="your email" required>
+                    </div>
+                    <div>
+                        <label for="textarea">Message</label>
+                        <textarea name="textarea" id="textarea" cols="30" rows="10" placeholder="How can I help you?" maxlength="2000" required></textarea>
+                    </div>
+                    <div class="contact-btn-container">
+                        <button class="btn submit-btn">Submit</button>
+                    </div>
+                </form>
             </div>
             <!--  ^^ END CONTACT FORM ^^ -->
             <!-- COPYRIGHT -->
             <div class="footer__copyright">
                 <p class="footer__copyright-txt">Michelle Renee Bloodworth<sup>&copy;</sup></p>
             </div>
+            <!--  ^^ END COPYRIGHT ^^  -->
         </div>
     </footer>
     <!--  ^^ END FOOTER  ^^  -->

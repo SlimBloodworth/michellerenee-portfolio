@@ -57,6 +57,12 @@ p {
     margin-bottom: 1.5rem;
 }
 
+.btn {
+    background-color: var(--foam-green);
+    color: #fff;
+    font-family: var(--ff-primary);
+}
+
 
 /*HEADER*/
 
@@ -153,4 +159,17 @@ p {
 svg:hover path {
     fill: var(--foam-green);
     transition: 250ms ease-in-out;
+}
+
+.footer__copyright-txt {
+    font-family: var(--ff-primary);
+}
+
+
+/*CONTACT FORM*/
+
+.contact-form {
+    outline: 2px solid var(--foam-green);
+    color: #d9d9d9;
+    font-family: var(--ff-secondary);
 }
