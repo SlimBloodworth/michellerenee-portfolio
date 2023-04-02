@@ -55,3 +55,9 @@ From client Janese Maricelli:
 "Michelle is diligent, intelligent, and quick with turnaround. She was able to take the information given and articulately expand upon it with great detail. She delivered results fast ahead of schedule. MUCH APPRECIATED!"
 Janese Maricelli
 CEO/Owner JanMar Agency janmaragency.com
+
+SEO
+- meta author <meta name="author" content="Michelle Renee Bloodworth">
+- title <title>Michelle Renee Bloodworth Portfolio UI Developer UX Designer</title>
+- meta keywords
+- content keywords
