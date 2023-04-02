@@ -57,7 +57,9 @@ Janese Maricelli
 CEO/Owner JanMar Agency janmaragency.com
 
 SEO
-- meta author <meta name="author" content="Michelle Renee Bloodworth">
-- title <title>Michelle Renee Bloodworth Portfolio UI Developer UX Designer</title>
-- meta keywords
+- author <meta name="author" content="Michelle Renee Bloodworth">
+- description (130 char max) <meta name="description" content="">
+- keywords <meta name="keywords" content="">
+- title (60 char max) <title>Michelle Renee Bloodworth Portfolio UI Developer UX Designer</title>
+*Content*
 - content keywords
