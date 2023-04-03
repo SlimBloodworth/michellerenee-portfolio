@@ -78,7 +78,6 @@ Users should be able to:
 ## Author
 
 - Website - [micellerenee.dev](https://michellerenee.dev)
-- Facebook - [Creative Software Solutions](https://www.facebook.com/profile.php?id=100073842390690)
 - CodePen - [@slimbloodworth](https://codepen.io/slimbloodworth)
 - LinkedIn - [Michelle Renee](https://www.linkedin.com/in/michelle-renee-99b455187/)
 - GitHub - [@slimbloodworth](https://github.com/SlimBloodworth)
