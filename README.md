@@ -54,6 +54,7 @@ Users should be able to:
 - CSS custom properties
 - Flexbox
 - CSS Grid
+- .git
 - Git BASH
 - [VSCode](https://code.visualstudio.com/) - Editor
 
