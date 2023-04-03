@@ -102,7 +102,11 @@
             <!-- CONTACT FORM  -->
             <div class="footer__contact">
                 <p class="footer__title">contact</p>
-                <form action="" class="contact-form">
+                <form class="contact-form" action="https://formsubmit.co/15716ade978d4426f970ea7e7e6a41f3" method="POST">
+                    <!-- Honeypot -->
+                    <input type="text" name="_honeypot" style="display: none;">
+                    <!-- Disable captcha (optional) -->
+                    <!-- <input type="hidden" name="_captcha" value="false"> -->
                     <div>
                         <label for="first-name">First Name</label>
                         <input type="text" id="first-name" name="first-name" placeholder="first name" required>
@@ -117,7 +121,7 @@
                     </div>
                     <div>
                         <label for="textarea">Message</label>
-                        <textarea name="textarea" id="textarea" cols="30" rows="10" placeholder="How can I be of help?" maxlength="2000" required></textarea>
+                        <textarea name="message" id="textarea" cols="30" rows="10" placeholder="How can I be of help?" maxlength="2000" required></textarea>
                     </div>
                     <div class="contact-btn-container">
                         <button class="btn submit-btn">Submit</button>

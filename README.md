@@ -59,8 +59,8 @@ Users should be able to:
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [formsubmit.co](https://formsubmit.co/) - I used this to create an endpoint for the email contact for. It offers an option that shields my naked email address and helps prevent spam bots from accessing my email address.
+- [A Designer Who Codes instructional video](https://www.youtube.com/watch?v=Yg6POD0M30w) - This is a great video on how to set up formsubit for an HTML email form.
 
 
 ## Author
