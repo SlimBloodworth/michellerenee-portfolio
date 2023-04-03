@@ -37,6 +37,7 @@ Users should be able to:
 ## My process
 
 - I decided to use GitHub Pages to host my portfolio site. I love open source, I really like GitHub, and I felt that this platform would be a good way to show my understanding of .git and using a repo such as GitHub. I decided to use the BASH terminal for this project to push, pull, branch, etc.
+- I decided NOT to use Bootstrap for this project. I want to show my skills in understanding and building responsive web applications. I will add a bootstrap project for viewing under projects.
 - I set up the repo and configured the custom domain for GitHub Pages, and verified the custom domain in GitHub Pages for added security.
 - I built out a very basic structure for the landing page to test that everything was working the way it should be and to get it up and running. I added some social contact links, a downloadable resume, and started a feature branch to work on.
 - I decided to go with a contact email form instead of just a contact CTA button. I feel this will show that I do know how to build forms and use form validations.
@@ -65,6 +66,8 @@ Users should be able to:
 ### Continued development
 
 - Being a Portfolio, this site will change as my skills and needs dictate.
+- I am still deciding if I want to use Sass for this project going forward. I think it would be a good idea to show my knowledge and understanding of Sass and I will most likely use gulp to accomplish this.
+- I will be making a dark/light mode toggle for this project and I am deciding on color pallets for this.
 
 ### Useful resources
 
