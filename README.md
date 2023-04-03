@@ -32,24 +32,34 @@ Users should be able to:
 
 ### Links
 
-- Live Site: [michellerenee.dev](https://michellerenee.dev)
+- [michellerenee.dev](https://michellerenee.dev)
 
 ## My process
 
+- I decided to use GitHub Pages to host my portfolio site. I love open source, I really like GitHub, and I felt that this platform would be a good way to show my understanding of .git and using a repo such as GitHub. I decided to use the BASH terminal for this project to push, pull, branch, etc.
+- I set up the repo and configured the custom domain for GitHub Pages, and verified the custom domain in GitHub Pages for added security.
+- I built out a very basic structure for the landing page to test that everything was working the way it should be and to gte it up and running. I added some social contact links and started a feature branch to work on.
+- I decided to go with a contact email form in stead of just a contact CTA button. I feel this will show that I do know how to build forms and use form validations.
+- I used freeconvert.com to convert a .png that I wanted to use for a favicon into .ico.
+- I started user research for my target audience.
+- I started a user journey map.
+- I started doing SEO and keyword research for meta description tags and content writing.
+- I started gathering and organizing content assets.
+- I started lo-fi wireframes.
+
 ### Built with
 
+- Mobile-first workflow
 - Semantic HTML5 markup
 - CSS custom properties
 - Flexbox
 - CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+- Git BASH
+- [VSCode](https://code.visualstudio.com/) - Editor
 
 ### What I learned
 
-- How to setup the DNS to point to GitHubPages to host this site. This was a bit of a hassels and I ran into several issues, so it was a lot of informative research in trouble shooting.
+- How to setup the DNS to point to GitHub Pages to host this site. This was a bit of a hassels and I ran into several issues, so it was a lot of informative research in trouble shooting.
 
 ### Continued development
 
@@ -57,9 +67,9 @@ Users should be able to:
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
+- [GitHub Pages Custom Domain](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site) - Documentation on configuring a custom domain for GitHub Pages site.
+- [Verifying a custom domain in GitHub Pages](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages) - Documentation on verifying a custom domain in GitHub Pages
+- [freeconvert.com](https://www.freeconvert.com/png-to-ico) - To convert .pgn into .ico for favicon.
 
 ## Author
 
@@ -71,4 +81,4 @@ Users should be able to:
 
 ## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
+Thanks to GitHub for allowing a space for developers to network, learn, and show their progress.
