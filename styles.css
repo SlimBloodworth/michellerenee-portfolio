@@ -163,6 +163,7 @@ svg:hover path {
 
 .footer__copyright-txt {
     font-family: var(--ff-primary);
+    font-size: 0.8rem;
 }
 
 
