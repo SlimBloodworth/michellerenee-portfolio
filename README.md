@@ -38,7 +38,7 @@ Users should be able to:
 
 - I decided to use GitHub Pages to host my portfolio site. I love open source, I really like GitHub, and I felt that this platform would be a good way to show my understanding of .git and using a repo such as GitHub. I decided to use the BASH terminal for this project to push, pull, branch, etc.
 - I set up the repo and configured the custom domain for GitHub Pages, and verified the custom domain in GitHub Pages for added security.
-- I built out a very basic structure for the landing page to test that everything was working the way it should be and to gte it up and running. I added some social contact links, a downloadable resume, and started a feature branch to work on.
+- I built out a very basic structure for the landing page to test that everything was working the way it should be and to get it up and running. I added some social contact links, a downloadable resume, and started a feature branch to work on.
 - I decided to go with a contact email form instead of just a contact CTA button. I feel this will show that I do know how to build forms and use form validations.
 - I used freeconvert.com to convert a .png that I wanted to use for a favicon into .ico.
 - I started user research for my target audience.
