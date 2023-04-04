@@ -40,8 +40,7 @@ Users should be able to:
 - I decided NOT to use Bootstrap for this project. I want to show my skills in understanding and building responsive web applications. I will add a bootstrap project for viewing under projects.
 - I set up the repo and configured the custom domain for GitHub Pages, and verified the custom domain in GitHub Pages for added security.
 - I built out a very basic structure for the landing page to test that everything was working the way it should be and to get it up and running. I added some social contact links, a downloadable resume, and started a feature branch to work on.
-- I decided to go with a contact email form instead of just a contact CTA button. I feel this will show that I do know how to build forms and use form validations. I am currently building this on the feature-footer branch.
-- I used freeconvert.com to convert a .png that I wanted to use for a favicon into .ico.
+- I decided to go with a contact email form instead of just a contact CTA button. I feel this will show my understanding of forms and form validations. I am currently building this on the feature-footer branch and merging it as needed.
 - I started user research for my target audience.
 - I started a user journey map.
 - I started doing SEO and keyword research for meta description tags and content writing.
