@@ -157,12 +157,12 @@ p {
     text-decoration: none;
 }
 
-svg:hover path {
+.social-svg__hover:hover path {
     fill: var(--foam-green);
     transition: 250ms ease-in-out;
 }
 
-svg:hover {
+.social-svg__hover:hover {
     transform: scale(1.5);
     transition: 250ms ease-in-out;
 }
