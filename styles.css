@@ -219,3 +219,12 @@ svg:hover {
     color: var(--foam-green);
     transition: 250ms ease-in-out;
 }
+
+
+/*ACCESSIBILITY*/
+
+@media(prefers-reduced-motion) {
+    .reduce-motion {
+        transform: none;
+    }
+}
