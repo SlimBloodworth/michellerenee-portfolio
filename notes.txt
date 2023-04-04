@@ -3,6 +3,11 @@ RESOURCES
 -https://www.youtube.com/watch?v=Yg6POD0M30w - how to video for connecting form submit to email form.
 -https://www.freeconvert.com/png-to-ico - convert png to ico for favicon.
 
+RESOURCES
+-https://formsubmit.co - for email form to secure from spam bots and scrapers, etc.
+-https://www.youtube.com/watch?v=Yg6POD0M30w - how to video for connecting form submit to email form.
+-https://www.freeconvert.com/png-to-ico - convert png to ico for favicon.
+
 LANDING PAGE CONTENT
 -Nice to meet you! I'm Michelle Renee.
 
