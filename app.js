@@ -1,8 +1,11 @@
-const btn = document.querySelector("[data-btn]")
-btn.addEventListener("click", () => {
-    btn.classList.add("hide")
-        //allows play animation back and forth for testing
-        //btn.classList.toggle("hide")
+/* Form Submit Button */
+
+const submitBtn = document.querySelector("[data-submit-btn]")
+submitBtn.addEventListener("click", () => {
+    submitBtn.classList.add("hide");
+    //^^^plays animation only once    
+    //submitBtn.classList.toggle("hide");
+    //^^^allows play animation back and forth
 })
 
 // var path = document.querySelector("path");
