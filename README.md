@@ -73,7 +73,7 @@ Users should be able to:
 
 - [GitHub Pages Custom Domain](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site) - Documentation on configuring a custom domain for GitHub Pages site.
 - [Verifying a custom domain in GitHub Pages](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages) - Documentation on verifying a custom domain in GitHub Pages
-- [freeconvert.com](https://www.freeconvert.com/png-to-ico) - To convert .pgn into .ico for favicon.
+- [freeconvert.com](https://www.freeconvert.com/png-to-ico) - To convert .png into .ico for favicon.
 
 ## Author
 
