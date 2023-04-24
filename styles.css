@@ -219,9 +219,6 @@ p {
 .submit-btn {
     background-color: #2B2D2F;
     position: relative;
-    /* border: none;
-    border-radius: 50px;
-    padding: .3rem; */
     box-shadow: 0.16rem 0.16rem 0.16rem #333333, -0.16rem -0.16rem 0.16rem #515151;
 }
 
@@ -233,16 +230,6 @@ p {
 
 /*Animated Submit Button*/
 
-
-/* .submit-btn.hide {
-    padding: 0;
-    background-color: transparent;
-    color: transparent;
-    user-select: none;
-    cursor: default;
-    animation: vanish 0ms calc(var(--compact-animation-time) + var(--progress-bar-animation-time)) forwards;
-} */
-
 .submit-btn.animate {
     background-color: transparent;
     color: transparent;
@@ -252,12 +239,52 @@ p {
 
 .submit-btn::before {
     content: "";
-    background-color: #2B2D2F;
-    border-radius: 50px;
-    width: 100%;
-    height: 100%;
-    inset: 0;
+    display: none;
     position: absolute;
+    background-color: #2B2D2F;
+    inset: 0;
+    border-radius: 50px;
+    animation: compact var(--compact-animation-time) cubic-bezier(0.26, 0.6, 0.46, 1.7);
+    animation-fill-mode: forwards;
+}
+
+.submit-btn::after {
+    content: "";
+    display: none;
+    position: absolute;
+    background-color: #4B4D4F;
+    /*  51% makes that line in the middle of the bar disappear  */
+    left: 51%;
+    right: 51%;
+    top: 45%;
+    bottom: 45%;
+    border-radius: .25em;
+    /* creates a delay*/
+    animation: progress var(--progress-bar-animation-time) var(--compact-animation-time);
+    /* -so the keyframes at 100% stay on the animation- */
+    animation-fill-mode: forwards;
+}
+
+.submit-btn.animate::before,
+.submit-btn.animate::after {
+    display: block;
+}
+
+@keyframes compact {
+    100% {
+        left: -25%;
+        right: -25%;
+        top: 45%;
+        bottom: 45%;
+        border-radius: .25em;
+    }
+}
+
+@keyframes progress {
+    100% {
+        left: -25%;
+        right: -25%;
+    }
 }
 
 
