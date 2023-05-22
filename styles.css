@@ -6,6 +6,11 @@
     /*fonts*/
     --ff-primary: 'Satoshi', sans-serif;
     --ff-secondary: 'Inter', sans-serif;
+    /*animated submit button*/
+    --compact-animation-time: 500ms;
+    --progress-bar-animation-time: 1000ms;
+    --circle-animation-time: 300ms;
+    --checkmark-animation-time: 300ms;
 }
 
 
@@ -61,6 +66,9 @@ p {
     background-color: var(--foam-green);
     color: #fff;
     font-family: var(--ff-primary);
+    border: none;
+    border-radius: 50px;
+    padding: .3rem;
     cursor: pointer;
 }
 
@@ -157,12 +165,12 @@ p {
     text-decoration: none;
 }
 
-svg:hover path {
+.social-svg__hover:hover path {
     fill: var(--foam-green);
     transition: 250ms ease-in-out;
 }
 
-svg:hover {
+.social-svg__hover:hover {
     transform: scale(1.5);
     transition: 250ms ease-in-out;
 }
@@ -201,17 +209,21 @@ svg:hover {
     border-radius: 10px;
     font-family: var(--ff-secondary);
     text-align: center;
+    margin: 0 0 1rem;
 }
 
-.contact-btn-container {
+.submit-btn-container {
     margin-top: 1rem;
+    /* width: 2.8rem;
+    height: 2.8rem; */
 }
+
+
+/*Submit Button*/
 
 .submit-btn {
     background-color: #2B2D2F;
-    border: none;
-    border-radius: 50px;
-    padding: .3rem;
+    position: relative;
     box-shadow: 0.16rem 0.16rem 0.16rem #333333, -0.16rem -0.16rem 0.16rem #515151;
 }
 
@@ -219,6 +231,128 @@ svg:hover {
     color: var(--foam-green);
     transition: 250ms ease-in-out;
 }
+
+
+/*Animated Submit Button*/
+
+.submit-btn.hide {
+    padding: 0;
+    background-color: transparent;
+    color: transparent;
+    user-select: none;
+    cursor: default;
+    animation: vanish 0ms calc(var(--compact-animation-time) + var(--progress-bar-animation-time)) forwards;
+}
+
+.submit-btn::before {
+    content: "";
+    display: none;
+    position: absolute;
+    background-color: #2B2D2F;
+    inset: 0;
+    border-radius: 50px;
+    animation: compact var(--compact-animation-time) cubic-bezier(0.26, 0.6, 0.46, 1.7);
+    animation-fill-mode: forwards;
+}
+
+.submit-btn::after {
+    content: "";
+    display: none;
+    position: absolute;
+    background-color: #4B4D4F;
+    /*  51% makes that line in the middle of the bar disappear  */
+    left: 51%;
+    right: 51%;
+    top: 45%;
+    bottom: 45%;
+    border-radius: .25em;
+    /* creates a delay*/
+    animation: progress var(--progress-bar-animation-time) var(--compact-animation-time);
+    /* -so the keyframes at 100% stay on the animation- */
+    animation-fill-mode: forwards;
+}
+
+.submit-btn.hide::before,
+.submit-btn.hide::after {
+    display: block;
+}
+
+.submit-btn.hide+.checkmark__container {
+    border-radius: .25em;
+    width: 0;
+    height: 0;
+    animation: circle var(--circle-animation-time) calc(var(--compact-animation-time) + var(--progress-bar-animation-time)) forwards cubic-bezier(0.26, 0.6, 0.46, 1.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.checkmark__container {
+    /* margin: auto; */
+    max-width: 45px;
+    max-height: 45px;
+}
+
+
+/* animate stroke of checkmark*/
+
+.submit-btn.hide+.checkmark__container .checkmark__svg {
+    stroke: white;
+    width: 20px;
+    stroke-dashoffset: 40.84104919433594;
+    stroke-dasharray: 40.84104919433594;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2px;
+    animation: checkmark var(--checkmark-animation-time) calc(var(--compact-animation-time) + var(--progress-bar-animation-time) + var(--circle-animation-time)) forwards;
+}
+
+@keyframes compact {
+    100% {
+        left: -25%;
+        right: -25%;
+        top: 45%;
+        bottom: 45%;
+        border-radius: .25em;
+    }
+}
+
+@keyframes progress {
+    100% {
+        left: -25%;
+        right: -25%;
+    }
+}
+
+@keyframes vanish {
+    100% {
+        width: 0;
+        height: 0;
+    }
+}
+
+@keyframes circle {
+    0% {
+        width: calc(var(--btn-width) * 1.50);
+        height: calc(var(--btn-height) * .1);
+    }
+    100% {
+        background-color: var(--foam-green);
+        width: 45px;
+        height: 45px;
+        border-radius: 100%;
+    }
+}
+
+@keyframes checkmark {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+
+/*SVG for the checkmark*/
 
 
 /*ACCESSIBILITY*/

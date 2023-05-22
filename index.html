@@ -70,7 +70,7 @@
             <div class="footer__social-container">
                 <!--LinkedIn-->
                 <a href="https://www.linkedin.com/in/michelle-renee-bloodworth-99b455187/" class="footer__social-icons" target="_blank">
-                    <svg class="reduce-motion" xmlns="http://www.w3.org/2000/svg" width="24.61" height="24" aria-labelledby="socialLinkedIn" role="img">
+                    <svg class="reduce-motion social-svg__hover" xmlns="http://www.w3.org/2000/svg" width="24.61" height="24" aria-labelledby="socialLinkedIn" role="img">
                         <title id="socialLinkedIn">LinkedIn</title>
                         <path
                           fill="#d9d9d9"
@@ -80,7 +80,7 @@
                       </svg>
                 </a>
                 <!--GitHub-->
-                <a href="https://github.com/SlimBloodworth" class="footer__social-icons" target="_blank"><svg class="reduce-motion"
+                <a href="https://github.com/SlimBloodworth" class="footer__social-icons" target="_blank"><svg class="reduce-motion social-svg__hover"
                         xmlns="http://www.w3.org/2000/svg"
                         width="24.61"
                         height="24"
@@ -96,7 +96,7 @@
                       </svg>
                     </a>
                 <!--CodePen-->
-                <a href="https://codepen.io/slimbloodworth" class="footer__social-icons" target="_blank"><svg class="reduce-motion"
+                <a href="https://codepen.io/slimbloodworth" class="footer__social-icons" target="_blank"><svg class="reduce-motion social-svg__hover"
                         xmlns="http://www.w3.org/2000/svg"
                         width="24.61"
                         height="24"
@@ -136,8 +136,15 @@
                         <label for="textarea">Message</label>
                         <textarea class="contact-form__textarea" name="message" id="textarea" cols="22" rows="5" placeholder="How can I be of help?" maxlength="2000" required></textarea>
                     </div>
-                    <div class="contact-btn-container">
-                        <button class="btn submit-btn">Submit</button>
+                    <!-- Animated Submit Button -->
+                    <div class="submit-btn-container">
+                        <button class="btn submit-btn" data-submit-btn>Submit</button>
+                        <!-- SVG for the checkmark -->
+                        <div class="checkmark__container">
+                            <svg x="0px" y="0px" fill="none" class="checkmark__svg" viewBox="0 0 25 30">
+                    <path d="M2,19.2C5.9,23.6,9.4,28,9.4,28L23,2"/>
+                  </svg>
+                        </div>
                     </div>
                 </form>
             </div>
