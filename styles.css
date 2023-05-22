@@ -230,11 +230,13 @@ p {
 
 /*Animated Submit Button*/
 
-.submit-btn.animate {
+.submit-btn.hide {
+    padding: 0;
     background-color: transparent;
     color: transparent;
     user-select: none;
     cursor: default;
+    animation: vanish 0ms calc(var(--compact-animation-time) + var(--progress-bar-animation-time)) forwards;
 }
 
 .submit-btn::before {
@@ -265,9 +267,33 @@ p {
     animation-fill-mode: forwards;
 }
 
-.submit-btn.animate::before,
-.submit-btn.animate::after {
+.submit-btn.hide::before,
+.submit-btn.hide::after {
     display: block;
+}
+
+.submit-btn.hide+.checkmark__container {
+    border-radius: .25em;
+    width: 0;
+    height: 0;
+    animation: circle var(--circle-animation-time) calc(var(--compact-animation-time) + var(--progress-bar-animation-time)) forwards cubic-bezier(0.26, 0.6, 0.46, 1.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* animate stroke of checkmark*/
+
+.submit-btn.hide+.checkmark__container .checkmark__svg {
+    stroke: white;
+    width: 20px;
+    stroke-dashoffset: 40.84104919433594;
+    stroke-dasharray: 40.84104919433594;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2px;
+    animation: checkmark var(--checkmark-animation-time) calc(var(--compact-animation-time) + var(--progress-bar-animation-time) + var(--circle-animation-time)) forwards;
 }
 
 @keyframes compact {
@@ -287,11 +313,34 @@ p {
     }
 }
 
+@keyframes vanish {
+    100% {
+        width: 0;
+        height: 0;
+    }
+}
+
+@keyframes circle {
+    0% {
+        width: calc(var(--btn-width) * 1.50);
+        height: calc(var(--btn-height) * .1);
+    }
+    100% {
+        background-color: #71dfbe;
+        width: 45px;
+        height: 45px;
+        border-radius: 100%;
+    }
+}
+
+@keyframes checkmark {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
 
 /*SVG for the checkmark*/
-
-
-/* animate stroke of checkmark*/
 
 
 /*ACCESSIBILITY*/
