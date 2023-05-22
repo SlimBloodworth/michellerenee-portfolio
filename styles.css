@@ -290,6 +290,8 @@ p {
 
 .checkmark__container {
     /* margin: auto; */
+    max-width: 45px;
+    max-height: 45px;
 }
 
 
@@ -336,7 +338,7 @@ p {
         height: calc(var(--btn-height) * .1);
     }
     100% {
-        background-color: #71dfbe;
+        background-color: var(--foam-green);
         width: 45px;
         height: 45px;
         border-radius: 100%;
