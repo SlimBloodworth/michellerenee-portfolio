@@ -212,9 +212,14 @@ p {
     margin: 0 0 1rem;
 }
 
-.contact-btn-container {
+.submit-btn-container {
     margin-top: 1rem;
+    /* width: 2.8rem;
+    height: 2.8rem; */
 }
+
+
+/*Submit Button*/
 
 .submit-btn {
     background-color: #2B2D2F;
@@ -280,6 +285,11 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: auto;
+}
+
+.checkmark__container {
+    /* margin: auto; */
 }
 
 
