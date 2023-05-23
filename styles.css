@@ -112,6 +112,7 @@ p {
 
 .temporary {
     color: #4ce19e;
+    font-style: italic;
 }
 
 .hero__text {
