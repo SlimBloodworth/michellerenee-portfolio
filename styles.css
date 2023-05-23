@@ -54,6 +54,10 @@ h1 {
     margin-bottom: 1.5rem;
 }
 
+h2 {
+    font-weight: 500;
+}
+
 p {
     font-family: var(--ff-secondary);
     font-size: clamp(1rem, 0.79rem + 0.89vw, 1.125rem);
