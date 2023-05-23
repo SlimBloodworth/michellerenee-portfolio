@@ -214,8 +214,6 @@ p {
 
 .submit-btn-container {
     margin-top: 1rem;
-    /* width: 2.8rem;
-    height: 2.8rem; */
 }
 
 
@@ -289,10 +287,12 @@ p {
 }
 
 .checkmark__container {
-    /* margin: auto; */
     max-width: 45px;
     max-height: 45px;
 }
+
+
+/*SVG for the checkmark*/
 
 
 /* animate stroke of checkmark*/
@@ -350,9 +350,6 @@ p {
         stroke-dashoffset: 0;
     }
 }
-
-
-/*SVG for the checkmark*/
 
 
 /*ACCESSIBILITY*/
