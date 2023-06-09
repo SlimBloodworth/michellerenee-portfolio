@@ -217,17 +217,18 @@ p {
     margin: 0 0 1rem;
 }
 
+
+/*Submit Button*/
+
 .submit-btn-container {
     margin-top: 1rem;
 }
 
-
-/*Submit Button*/
-
 .submit-btn {
-    background-color: #2B2D2F;
+    /* background-color: #2B2D2F; */
+    background-color: transparent;
     position: relative;
-    box-shadow: 0.16rem 0.16rem 0.16rem #333333, -0.16rem -0.16rem 0.16rem #515151;
+    /* box-shadow: 0.16rem 0.16rem 0.16rem #333333, -0.16rem -0.16rem 0.16rem #515151; */
 }
 
 .submit-btn:hover {
