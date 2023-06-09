@@ -10,7 +10,7 @@ LANDING PAGE CONTENT
 
 -Welcome to my Portfolio, which I am currently building.
 
--About Projects Blog
+-About Projects Blog Workshops
 
 -HTML CSS SCSS JavaScript UX
 
@@ -19,6 +19,7 @@ LANDING PAGE CONTENT
 -Certifications
 
 -Connect - LinkedIn GitHub CodePen
+-Social - facebook Youtube Twitter Instagram
 
 -spot for testimonials
 
