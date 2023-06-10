@@ -11,9 +11,9 @@ submitBtn.addEventListener("click", () => {
 /* Thank you message function*/
 
 function thankUser() {
-    let userName = document.getElementById("first-name").value;
-    let greeting = "Thanks " + userName + "! I'll get back to you ASAP! ";
-    let greetingOutPut = document.getElementById("textarea");
+    const userName = document.getElementById("first-name").value;
+    const greeting = "Thanks " + userName + "! I'll get back to you ASAP! ";
+    const greetingOutPut = document.getElementById("textarea");
     /* greetingOutPut = greeting;*/
     greetingOutPut.value = greeting;
 }
