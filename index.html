@@ -114,21 +114,21 @@
             <!-- CONTACT FORM  -->
             <div class="footer__contact">
                 <p class="footer__title">contact</p>
-                <form class="contact-form" action="https://formsubmit.co/15716ade978d4426f970ea7e7e6a41f3" method="POST">
+                <form class="contact-form" action="https://formsubmit.co/15716ade978d4426f970ea7e7e6a41f3" method="POST" target="_blank">
                     <!-- Honeypot -->
                     <input type="text" name="_honeypot" style="display: none;">
                     <!-- Disable captcha (optional) -->
-                    <!-- <input type="hidden" name="_captcha" value="false"> -->
+                    <input type="hidden" name="_captcha" value="false">
                     <div>
-                        <!-- <label for="first-name">First</label> -->
+                        <label for="first-name">First Name</label>
                         <input class="contact-form__input" type="text" id="first-name" name="first-name" placeholder="First Name" required>
                     </div>
                     <div>
-                        <!-- <label for="last-name">Last</label> -->
+                        <label for="last-name">Last Name</label>
                         <input class="contact-form__input" type="text" id="last-name" name="last-name" placeholder="Last Name" required>
                     </div>
                     <div>
-                        <!-- <label for="email">Email</label> -->
+                        <label for="email">Email</label>
                         <input class="contact-form__input" type="email" id="email" name="email" placeholder="Your Email" required>
                     </div>
                     <div>
@@ -137,7 +137,7 @@
                     </div>
                     <!-- Animated Submit Button -->
                     <div class="submit-btn-container">
-                        <button class="btn submit-btn" data-submit-btn>Send</button>
+                        <button class="btn submit-btn" data-submit-btn id="submitBtn">Send</button>
                         <!-- SVG for the checkmark -->
                         <div class="checkmark__container">
                             <svg x="0px" y="0px" fill="none" class="checkmark__svg" viewBox="0 0 25 30">

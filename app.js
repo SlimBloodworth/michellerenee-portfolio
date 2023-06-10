@@ -8,6 +8,20 @@ submitBtn.addEventListener("click", () => {
     //^^^allows play animation back and forth
 })
 
+/* Thank you message function*/
+
+function thankUser() {
+    let userName = document.getElementById("first-name").value;
+    let greeting = "Thanks " + userName + "! I'll get back to you ASAP! ";
+    let greetingOutPut = document.getElementById("textarea");
+    /* greetingOutPut = greeting;*/
+    greetingOutPut.value = greeting;
+}
+
+const submitButton = document.getElementById("submitBtn");
+submitButton.addEventListener("click", thankUser);
+
+/* Testing Purpose */
 // var path = document.querySelector("path");
 // var length = path.getTotalLength();
 
