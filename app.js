@@ -17,6 +17,7 @@ function thankUser() {
     const greetingOutPut = document.getElementById("thankYouMsg");
     /* greetingOutPut = greeting; <- does not work, missing .value*/
     greetingOutPut.value = greeting;
+    /* Set Thank you message timing to match submit button timing */
     greetingOutPut.classList.add("fade-in");
 }
 
