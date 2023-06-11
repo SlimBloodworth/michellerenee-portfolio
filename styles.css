@@ -218,6 +218,17 @@ p {
 }
 
 
+/*Thank you message*/
+
+.thanks {
+    background-color: transparent;
+    border: none;
+    color: #d9d9d9;
+    font-family: var(--ff-secondary);
+    text-align: center;
+}
+
+
 /*Submit Button*/
 
 .submit-btn-container {

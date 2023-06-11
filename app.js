@@ -1,4 +1,4 @@
-/* Form Submit Button */
+/* Form Submit Button Animation*/
 
 const submitBtn = document.querySelector("[data-submit-btn]")
 submitBtn.addEventListener("click", () => {
@@ -11,10 +11,11 @@ submitBtn.addEventListener("click", () => {
 /* Thank you message function*/
 
 function thankUser() {
+    /*const userName = document.getElementById("first-name");<- does not work, missing .value*/
     const userName = document.getElementById("first-name").value;
-    const greeting = "Thanks " + userName + "! I'll get back to you ASAP! ";
-    const greetingOutPut = document.getElementById("textarea");
-    /* greetingOutPut = greeting;*/
+    const greeting = "Thanks " + userName + "!";
+    const greetingOutPut = document.getElementById("thankYouMsg");
+    /* greetingOutPut = greeting; <- does not work, missing .value*/
     greetingOutPut.value = greeting;
 }
 
