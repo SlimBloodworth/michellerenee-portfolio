@@ -76,6 +76,12 @@ p {
     cursor: pointer;
 }
 
+/* .hover:hover {
+    color: var(--foam-green);
+    transform: scale(1.5);
+    transition: 250ms ease-in-out;
+} */
+
 
 /*HEADER*/
 
@@ -95,6 +101,14 @@ p {
     text-align: center;
     gap: 20px 0px;
     margin-top: 20px;
+}
+.nav-link {
+    font-family: var(--ff-secondary);
+    text-decoration: none;
+    color: #fff;
+    line-height: 1;
+    font-size: 1rem;
+    flex: 1 0 100%;
 }
 
 .primary-nav .header__home:hover {
@@ -132,7 +146,7 @@ p {
     border-bottom: 1px solid var(--foam-green);
 }
 
-.contact-me:hover {
+.contact-me, .nav-link:hover {
     color: var(--foam-green);
     transition: 250ms ease-in-out;
 }
@@ -161,11 +175,11 @@ p {
     font-size: 1.5rem;
 }
 
-.footer__social-container {
+.footer__social-container, .nav__social-container, .nav-container {
     display: inline-block;
 }
 
-.footer__social-icons {
+.footer__social-icons, .nav__social-icons, .nav-link {
     margin: 0 25px 0 25px;
     text-decoration: none;
 }
