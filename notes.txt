@@ -64,3 +64,27 @@ SEO
 - title (60 char max) <title>Michelle Renee Bloodworth Portfolio UI Developer UX Designer</title>
 *Content*
 - content keywords
+
+*******************************
+
+<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  Meta SEO  -->
+    <meta name="author" content="Michelle Renee Bloodworth">
+    <meta name="description" content="UI developer and UX designer merging development skills with a focus on design principles. Bringing creativity and functionality together through thoughtful design.">
+    <!-- Title -->
+    <title>UI Developer UX Designer Michelle Renee Creating Engaging Web Experiences</title>
+    <!-- favicon -->
+    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
+    <!-- Style Sheet -->
+    <link rel="stylesheet" href="styles.css">
+    <!--  Fonts  -->
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Script -->
+    <script src="app.js" defer></script>
+
+*******************************
