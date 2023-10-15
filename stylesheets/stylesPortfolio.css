@@ -1,0 +1,74 @@
+.hero-social-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-icon-repos {
+    margin: 0 2rem 0 2rem;
+}
+
+/*ATOMS SECTION*/
+.atoms-heading {
+    /* width: 100%; */
+    height: 10.5rem;
+}
+.atoms-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Animation around Atoms text */
+.ring {
+    width: 250px;
+    height: 250px;
+    border: 0px solid var(--primary-light);
+    border-radius: 50%;
+    position: absolute;
+}
+.ring:nth-child(1) {
+    border-bottom-width: 8px;
+    border-color: rgb(255, 0, 255);
+    animation: proton 2s linear infinite;
+}
+
+.ring:nth-child(2){
+    border-right-width: 8px;
+    border-color: rgb(0, 247, 255);
+    animation: neutron 2s linear infinite;
+  }
+
+  .ring:nth-child(3){
+    border-top-width: 8px;
+    border-color: rgb(0, 255, 13);
+    animation: electron 2s linear infinite;
+  }
+
+  @keyframes proton {
+    0% {
+     transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+    }
+    100% {
+     transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+    }
+  }
+  
+  @keyframes neutron {
+    0% {
+     transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+    }
+    100% {
+     transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+    }
+  }
+  
+  @keyframes electron {
+    0% {
+     transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+    }
+    100% {
+     transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+    }
+  }
