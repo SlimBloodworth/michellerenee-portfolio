@@ -59,9 +59,10 @@ li {
     margin-top: 1.5rem;
 }
 
+/* Primary Navigation */
 .primary-nav-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: column;      
     justify-content: center;
     align-items: center;
 }
@@ -80,15 +81,54 @@ li {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    --_gap: 2rem;/* <-- locally scoped variable*/
 }
 
-.primary-nav-item, .footer-icon {
-    margin: 0 .8rem 0 .8rem;
+.primary-nav-item {
+    position: relative;
+    padding-inline: calc(var(--_gap) / 2);
+    overflow: hidden;
 }
 
-.hero-nav-text {
-    color: var(--primary-dark);
+.primary-nav-item::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px; 
+    width: 100%;
+    scale: 0 1;
+    transition: scale 300ms var(--_scale-delay, 0ms), translate 500ms var(--_translate-delay, 0ms);
+  }
+
+  .primary-nav-item:hover::after {  
+    scale: 1 1;
+    background: var(--green-accent);
+  }
+
+  @supports selector(:has(h1)) {
+    .primary-nav-item:hover + .primary-nav-item::after {
+    translate: -100%;
+    --_scale-delay: 300ms;
+    --_translate-delay: 200ms;
+  }
+  .primary-nav-item:has(+.primary-nav-item:hover)::after {
+    translate: 100%;
+    --_scale-delay: 300ms;
+    --_translate-delay: 200ms;
+  }
 }
+
+  .hero-nav-text {
+    color: inherit;
+}
+
+  .hero-nav-text:hover {
+    font-weight: bold;
+    color: var(--rust-accent);
+  }
+
+/* ^^ End Primary Navigation */
 
 .title {
     font-size: 5rem;    
@@ -111,6 +151,10 @@ li {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.icon:hover {
+    scale: 1.5;
 }
 
 /*FOOTER*/
@@ -138,6 +182,10 @@ li {
 .footer-text {
     color: var(--primary-light);
     font-family: var(--ff-headers);
+}
+
+.footer-icon {
+    margin: 0 .8rem 0 .8rem;  
 }
 
 .font-smaller {
