@@ -188,6 +188,10 @@ li {
     margin: 0 .8rem 0 .8rem;  
 }
 
+.book-me:hover {
+    scale: 1.2;
+}
+
 .font-smaller {
     font-size: 0.6rem;
 }
