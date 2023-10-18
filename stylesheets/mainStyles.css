@@ -131,11 +131,12 @@ li {
 /* ^^ End Primary Navigation */
 
 .title {
-    font-size: 5rem;    
+    font-size: clamp(2rem, 5vw + 1rem, 5rem);
+    padding: 0 2rem 0 1rem;    
 }
 
 .sub-title {
-    font-size: 1.8rem;
+    font-size: clamp(1.2rem, 2vw + .5rem, 2rem);
     
 }
 
