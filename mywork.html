@@ -76,7 +76,41 @@
   </ul>
 </nav>
     <!-- MAIN CONTENT -->
-     <main id="main-content"></main>
+     <main id="main-content">
+      <!----- CONTACT ----->
+  <section class="section-alt" id="contact">
+    <div class="container contact-grid">
+      <div class="contact-info">
+        <p class="eyebrow">Contact</p>
+        <h2>Let's talk about your business.</h2>
+        <p>Tell me what's eating up your time and I'll let you know honestly whether an AI agent or automation is a good fit — no pressure, no jargon.</p>
+        <div class="contact-direct">
+          <!-- TODO: replace with Michelle's real contact email -->
+          <!--<a href="mailto:name@example.com</a>-->
+          <!--<span style="color:var(--text-muted); font-size:0.92rem;">Usually replies within 2 business days</span>-->
+        </div>
+      </div>
+ 
+      <form id="contactForm" novalidate>
+        <div class="form-field">
+          <label for="name">Name <span class="req">*</span></label>
+          <input type="text" id="name" name="name" autocomplete="name" required>
+        </div>
+        <div class="form-field">
+          <label for="email">Email <span class="req">*</span></label>
+          <input type="email" id="email" name="email" autocomplete="email" required>
+        </div>
+        <div class="form-field">
+          <label for="message">What are you hoping to solve? <span class="req">*</span></label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <p class="form-hint"><!--This opens a message in your email app addressed to Michelle -—> nothing is sent from this page. <!-- TODO: swap for a hosted form service (e.g. Formspree) when going live -->nothing is sent from this page.</p>
+        <button type="submit" class="btn btn-primary">Send message</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+     </main>
      <!-- ^^ END MAIN CONTENT -->
     <!----- FOOTER — sitemap + social links ----->
 <footer class="site-footer">
