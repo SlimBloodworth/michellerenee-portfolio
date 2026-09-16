@@ -39,7 +39,7 @@
  
     <nav class="primary-nav" aria-label="Primary">
       <ul>
-        <li class="nav-item"><a href="index.html" target="_blank">About Me</a></li>
+        <li class="nav-item"><a href="index.html">About Me</a></li>
         <li class="nav-item"><a href="mywork.html">My Work</a></li>
         <li class="nav-item"><a href="events.html" target="_blank">Workshops/Events</a></li>
         <!--<li class="nav-item"><a href="#services">My Services</a></li>-->
@@ -184,22 +184,27 @@
         </div>
         <!-- ^^ END SKILLS SECTION-->
       </div>
-    </div>
-  
+    </div>  
         <!-- CERTIFICATES SECTION-->
-        <section class="section-container certs-section">
-            <div class="sub-title-container">
-                <h2 class="sub-title">Certificates of Completion</h2>
+         <section id="certificates">
+            <div class="container">
+                <div class="section-head">
+                    <p class="eyebrow">Certificates</p>
+                    <h2>Certifications and Courses</h2>
+                </div>
             </div>
-        </section>
+         </section>
         <!-- ^^ END CERTIFICATES SECTION-->
         
         <!-- TESTIMONIALS SECTION-->
-        <section class="section-container testimonials-section">
-            <div class="sub-title-container">
-                <h2 class="sub-title">Testimonials</h2>
+        <section id="testimonials">
+            <div class="container">
+                <div class="section-head">
+                    <p class="eyebrow">Testimonials</p>
+                    <!--<h2>What People Are Saying</h2>-->
+                </div>
             </div>
-        </section>
+         </section>
         <!-- ^^ END TESTIMONIALS SECTION-->
            <!----- CONTACT ----->
   <section class="section-alt" id="contact">
@@ -210,8 +215,8 @@
         <p>Tell me what's eating up your time and I'll let you know honestly whether an AI agent or automation is a good fit — no pressure, no jargon.</p>
         <div class="contact-direct">
           <!-- TODO: replace with Michelle's real contact email -->
-          <!--<a href="mailto:name@example.com</a>-->
-          <!--<span style="color:var(--text-muted); font-size:0.92rem;">Usually replies within 2 business days</span>-->
+          <!--<a href="mailto:hello@michellerenee.dev</a>
+          <span style="color:var(--text-muted); font-size:0.92rem;">Usually replies within 2 business days</span>-->
         </div>
       </div>
  
@@ -228,7 +233,7 @@
           <label for="message">What are you hoping to solve? <span class="req">*</span></label>
           <textarea id="message" name="message" required></textarea>
         </div>
-        <p class="form-hint"><!--This opens a message in your email app addressed to Michelle -—> nothing is sent from this page. <!-- TODO: swap for a hosted form service (e.g. Formspree) when going live -->nothing is sent from this page.</p>
+        <p class="form-hint"><!--This opens a message in your email app addressed to Michelle -—> nothing is sent from this page. TODO: swap for a hosted form service (e.g. Formspree) when going live -->nothing is sent from this page.</p>
         <button type="submit" class="btn btn-primary">Send message</button>
         <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
       </form>
