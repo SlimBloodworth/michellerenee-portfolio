@@ -76,21 +76,116 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
-    <main class="main-content">
-        <!-- ABOUT ME SECTION-->
-        <section class="section-container about-section">
-            <div class="sub-title-container">
-                <h2 class="sub-title">About Me</h2>
-            </div>
-        </section>
-        <!-- ^^ END ABOUT ME SECTION-->
+    <main id="main-content">
+        <!----- HERO ----->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-copy">
+        <p class="eyebrow">Developer &middot; Designer &middot; AI Consulting &amp; Automation</p>
+        <h1>Practical solutions for <span class="accent">small businesses</span> that don't have time to babysit software.</h1>
+        <p class="hero-lede">I'm Michelle Renee Bloodworth. I design and build AI agents, workflows, and small automations that give local business owners back their evenings — then I teach them how it all works.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#work">See my work</a>
+          <a class="btn btn-ghost" href="#contact">Start a project</a>
+        </div>
+        <div class="hero-chips">
+          <span class="chip">Custom AI Agents</span>
+          <span class="chip">Workflow Automation</span>
+          <span class="chip">Owner-Friendly Training</span>
+        </div>
+      </div>
+ 
+      <div class="hero-art" aria-hidden="true">
+        <div class="horizon-frame">
+          <!-- Signature illustration: a "circuit horizon" — dawn breaking,
+               rendered in the fixed Golden Twilight gradient regardless of
+               site theme, so it always reads as the brand mark. -->
+          <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of a circuit-patterned sun rising over a horizon in twilight colors">
+            <defs>
+              <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#000814"/>
+                <stop offset="45%" stop-color="#001D3D"/>
+                <stop offset="75%" stop-color="#003566"/>
+                <stop offset="100%" stop-color="#FFC300"/>
+              </linearGradient>
+              <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#001D3D"/>
+                <stop offset="100%" stop-color="#000814"/>
+              </linearGradient>
+              <radialGradient id="sunfill" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#FFD60A"/>
+                <stop offset="100%" stop-color="#FFC300"/>
+              </radialGradient>
+            </defs>
+ 
+            <rect x="0" y="0" width="800" height="500" fill="url(#sky)"/>
+ 
+            <g class="sun-core">
+              <circle cx="400" cy="330" r="92" fill="url(#sunfill)"/>
+              <circle cx="400" cy="330" r="112" fill="none" stroke="#FFC300" stroke-width="2" opacity="0.45"/>
+              <circle cx="400" cy="330" r="134" fill="none" stroke="#FFC300" stroke-width="1.5" opacity="0.25"/>
+              <!-- circuit traces radiating from the sun -->
+              <g class="sun-ray">
+                <path d="M400 198 V150 M400 150 H360 M400 150 H440"/>
+                <path d="M508 236 L544 200 M544 200 H584"/>
+                <path d="M292 236 L256 200 M256 200 H216"/>
+                <path d="M546 330 H610 M610 330 V300"/>
+                <path d="M254 330 H190 M190 330 V300"/>
+              </g>
+              <circle class="sun-node" cx="440" cy="150" r="6"/>
+              <circle class="sun-node" cx="360" cy="150" r="6"/>
+              <circle class="sun-node" cx="584" cy="200" r="6"/>
+              <circle class="sun-node" cx="216" cy="200" r="6"/>
+              <circle class="sun-node" cx="610" cy="300" r="6"/>
+              <circle class="sun-node" cx="190" cy="300" r="6"/>
+            </g>
+ 
+            <rect x="0" y="368" width="800" height="132" fill="url(#ground)"/>
+            <rect x="0" y="366" width="800" height="4" fill="#FFC300" opacity="0.9"/>
+            <!-- small skyline / circuit-board silhouette along the horizon -->
+            <g fill="#00142B" opacity="0.85">
+              <rect x="40" y="336" width="14" height="32"/>
+              <rect x="64" y="322" width="10" height="46"/>
+              <rect x="120" y="344" width="18" height="24"/>
+              <rect x="660" y="330" width="12" height="38"/>
+              <rect x="690" y="316" width="10" height="52"/>
+              <rect x="740" y="342" width="16" height="26"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!----- ABOUT ME ----->
+  <section class="section-alt" id="about">
+    <div class="container about-grid">
+      <div class="about-avatar-wrap">
+        <!-- TODO: replace with a real headshot -->
+        <!-- <img class="avatar-placeholder" src="headshot.jpg" alt="Picture of Michelle Renee Bloodworth"> -->
+        <div class="avatar-placeholder" role="img" aria-label="Placeholder portrait of Michelle Renee Bloodworth">MRB</div>
+      </div>
+      <div>
+        <p class="eyebrow">About Me</p>
+        <h2 style="margin-top:10px; font-size: clamp(1.9rem, 1.4rem + 2vw, 2.5rem);">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</h2>
+        <div class="about-copy" style="margin-top:20px;">
+          <p><strong>I'm Michelle Renee Bloodworth</strong>, Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi obcaecati incidunt similique maiores sint ipsa hic atque cupiditate cum quas, nostrum amet illum consequatur harum inventore? Rem eligendi laborum earum...</p>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi obcaecati incidunt similique maiores sint ipsa hic atque cupiditate cum quas, nostrum amet illum consequatur harum inventore? Rem eligendi laborum earum...</p>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi obcaecati incidunt similique maiores sint ipsa hic atque cupiditate cum quas, nostrum amet illum consequatur harum inventore? Rem eligendi laborum earum....</p>
+        </div>
         <!-- SKILLS SECTION-->
-        <section class="section-container skills-section">
-            <div class="sub-title-container">
-                <h2 class="sub-title">Skills</h2>
-            </div>
-        </section>
+        <div class="skills-list">
+          <!--<span class="chip">Python</span>-->
+          <span class="chip">HTML/CSS/JavaScript</span>
+          <span class="chip">Web Design</span>
+          <span class="chip">Workflow Automation (n8n / Zapier / Make)</span>
+          <span class="chip">Prompt Engineering</span>
+          <span class="chip">Client Training</span>
+        </div>
         <!-- ^^ END SKILLS SECTION-->
+      </div>
+    </div>
+  
         <!-- CERTIFICATES SECTION-->
         <section class="section-container certs-section">
             <div class="sub-title-container">
@@ -98,13 +193,7 @@
             </div>
         </section>
         <!-- ^^ END CERTIFICATES SECTION-->
-        <!-- RESUME SECTION-->
-        <section class="section-container resume-section">
-            <div class="sub-title-container">
-                <h2 class="sub-title">My Resume</h2>
-            </div>
-        </section>
-        <!-- ^^ END RESUME SECTION-->
+        
         <!-- TESTIMONIALS SECTION-->
         <section class="section-container testimonials-section">
             <div class="sub-title-container">
