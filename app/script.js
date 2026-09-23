@@ -75,7 +75,7 @@
     });
  
     /* ---------- ACTIVE NAV LINK ON SCROLL ---------- */
-    var sections = document.querySelectorAll('main section[id]');
+    /*var sections = document.querySelectorAll('main section[id]');
     var navLinks = document.querySelectorAll('.primary-nav a');
  
     var observer = new IntersectionObserver(function (entries) {
@@ -89,7 +89,37 @@
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
  
-    sections.forEach(function (section) { observer.observe(section); });
+    sections.forEach(function (section) { observer.observe(section); });*/
+    var navLinks = document.querySelectorAll('.primary-nav .nav-item > a');
+    var currentPage = location.pathname.split('/').pop() || 'index.html';
+
+    function setActiveByPage() {
+      navLinks.forEach(function (link) {
+        var linkPage = link.getAttribute('href').split('#')[0];
+        var isCurrentPage = linkPage !== '' && linkPage === currentPage;
+        link.closest('.nav-item').classList.toggle('is-active', isCurrentPage);
+      });
+    }
+
+    setActiveByPage();
+
+    var contactSection = document.getElementById('contact');
+    var contactLink = document.querySelector('.primary-nav a[href="#contact"]');
+
+    if (contactSection && contactLink && 'IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            navLinks.forEach(function (link) { link.closest('.nav-item').classList.remove('is-active'); });
+            contactLink.closest('.nav-item').classList.add('is-active');
+          } else {
+            setActiveByPage();
+          }
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+
+      observer.observe(contactSection);
+    }
  
     /* ---------- CONTACT FORM ---------- */
     var form = document.getElementById('contactForm');
