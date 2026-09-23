@@ -90,6 +90,7 @@
     }, { rootMargin: '-45% 0px -50% 0px' });
  
     sections.forEach(function (section) { observer.observe(section); });*/
+    //^^ ABOVE CODE NEEDED DIDN'T ALLOW FOR ACTIVE NAV LINK BASED ON CURRENT PAGE.
     var navLinks = document.querySelectorAll('.primary-nav .nav-item > a');
     var currentPage = location.pathname.split('/').pop() || 'index.html';
 
