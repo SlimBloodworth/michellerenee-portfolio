@@ -152,6 +152,27 @@
       status.textContent = 'Opening your email app to send this to Michelle…';
       status.className = 'form-status is-success';
     });
+
+        /* ---------- CERTIFICATE VIEWER ---------- */
+    var certDialog = document.getElementById('certDialog');
+
+    if (certDialog) {
+      var certDialogImg = document.getElementById('certDialogImg');
+
+      document.querySelectorAll('.cert-thumb').forEach(function (thumb) {
+        thumb.addEventListener('click', function () {
+          var img = thumb.querySelector('img');
+          certDialogImg.src = img.src;
+          certDialogImg.alt = img.alt;
+          certDialog.showModal();
+        });
+      });
+
+      // Clicking the dark area outside the picture closes the dialog
+      certDialog.addEventListener('click', function (e) {
+        if (e.target === certDialog) { certDialog.close(); }
+      });
+    }
  
     /* ---------- FOOTER YEAR ---------- */
     document.getElementById('year').textContent = new Date().getFullYear();

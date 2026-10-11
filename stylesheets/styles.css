@@ -485,6 +485,41 @@
     .cert-grid > .card:only-child { flex-basis: 100%; }
   }
 
+  
+  /* ----- CERTIFICATIONS — full-size dialog ----- */
+  .cert-dialog {
+    width: min(92vw, 1100px);
+    padding: 0;
+    color: var(--text);
+    background: var(--bg-elevated);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  .cert-dialog::backdrop { background: rgba(0, 8, 20, 0.8); }
+  .cert-dialog img {
+    width: 100%;
+    height: auto;
+    max-height: 92vh;
+    object-fit: contain;
+  }
+  .cert-dialog-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    border: 1px solid var(--card-border);
+    background: var(--bg-elevated);
+    color: var(--text);
+    cursor: pointer;
+  }
+  .cert-dialog-close svg { width: 20px; height: 20px; }
+
  /* ----- WORKSHOPS — timeline ----- */
   .timeline { display: flex; flex-direction: column; gap: 0; border-left: 2px solid var(--border); margin-left: 8px; }
   .timeline-item { position: relative; padding: 0 0 40px 32px; }
