@@ -449,6 +449,77 @@
   .card-link svg { width: 14px; height: 14px; transition: transform var(--transition); }
   .card-link:hover svg { transform: translateX(3px); }
 
+  
+  /* ----- CERTIFICATIONS — thumbnail ----- */
+  .cert-thumb {
+    display: block;
+    width: 100%;
+    padding: 0;
+    background: none;
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    cursor: zoom-in;
+    transition: border-color var(--transition);
+  }
+  .cert-thumb:hover { border-color: var(--accent); }
+  .cert-thumb img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 1;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  
+  /* Mobile: certificates become a swipeable row (scroll-snap, no JS) */
+  @media (max-width: 699px) {
+    .cert-grid {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-block: 8px 16px;
+    }
+    .cert-grid > .card { flex: 0 0 85%; scroll-snap-align: start; }
+    .cert-grid > .card:only-child { flex-basis: 100%; }
+  }
+
+  
+  /* ----- CERTIFICATIONS — full-size dialog ----- */
+  .cert-dialog {
+    width: min(92vw, 1100px);
+    padding: 0;
+    color: var(--text);
+    background: var(--bg-elevated);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  .cert-dialog::backdrop { background: rgba(0, 8, 20, 0.8); }
+  .cert-dialog img {
+    width: 100%;
+    height: auto;
+    max-height: 92vh;
+    object-fit: contain;
+  }
+  .cert-dialog-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    border: 1px solid var(--card-border);
+    background: var(--bg-elevated);
+    color: var(--text);
+    cursor: pointer;
+  }
+  .cert-dialog-close svg { width: 20px; height: 20px; }
+
  /* ----- WORKSHOPS — timeline ----- */
   .timeline { display: flex; flex-direction: column; gap: 0; border-left: 2px solid var(--border); margin-left: 8px; }
   .timeline-item { position: relative; padding: 0 0 40px 32px; }

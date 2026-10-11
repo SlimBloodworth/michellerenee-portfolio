@@ -188,14 +188,41 @@
     </div>
     </section>  
         <!-- CERTIFICATES SECTION-->
-         <section id="certificates">
+         <!--<section id="certificates">
             <div class="container">
                 <div class="section-head">
                     <p class="eyebrow">Certificates</p>
                     <h2>Certifications and Courses</h2>
                 </div>
             </div>
-          </section>
+          </section>-->
+          <section id="certificates">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Certificates</p>
+      <h2>Certifications and Courses</h2>
+    </div>
+
+    <div class="card-grid cols-3 cert-grid">
+      <article class="card cert-card">
+        <button type="button" class="cert-thumb" aria-label="View full-size certificate: The Git &amp; GitHub Bootcamp">
+          <img src="assets/certifications/gitgithubcert020123.png" width="1600" height="1190" loading="lazy" alt="Udemy certificate of completion for The Git &amp; GitHub Bootcamp, taught by Colt Steele, awarded to Michelle Bloodworth on February 1, 2023.">
+        </button>
+        <span class="card-tag">Udemy</span>
+        <h3>The Git &amp; GitHub Bootcamp</h3>
+        <p>Instructor: Colt Steele. Covers Git and GitHub fundamentals, including pull requests.</p>
+        <div class="card-meta">
+          <span class="chip"><time datetime="2023-02-01">Feb 1, 2023</time></span>
+          <span class="chip">17 hours</span>
+        </div>
+        <a class="card-link" href="https://www.udemy.com/certificate/UC-6d43caf5-24f3-4e73-a268-4b5af4a4c3b2/" target="_blank" rel="noopener noreferrer">
+          Verify credential <span class="visually-hidden">(opens in a new tab)</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </article>    
+    </div>      
+  </div>
+</section>
         <!-- ^^ END CERTIFICATES SECTION-->
         
         <!-- TESTIMONIALS SECTION-->
@@ -243,6 +270,16 @@
   </section>
     </main>
     <!-- ^^ END MAIN CONTENT -->
+     
+    <!-- CERTIFICATE VIEWER (one shared dialog, filled in by script.js) -->
+    <dialog class="cert-dialog" id="certDialog" aria-label="Full-size certificate">
+      <form method="dialog">
+        <button class="cert-dialog-close" aria-label="Close certificate view">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </form>
+      <img id="certDialogImg" src="" alt="">
+    </dialog>
      <!----- FOOTER — sitemap + social links ----->
 <footer class="site-footer">
   <div class="container footer-grid">
