@@ -472,17 +472,17 @@
   }
 
   
-  /* Mobile: certificates become a swipeable row (scroll-snap, no JS) */
+  /* Mobile: any grid with .swipe-grid becomes a swipeable row (scroll-snap, no JS) */
   @media (max-width: 699px) {
-    .cert-grid {
+    .swipe-grid {
       display: flex;
       gap: 16px;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       padding-block: 8px 16px;
     }
-    .cert-grid > .card { flex: 0 0 85%; scroll-snap-align: start; }
-    .cert-grid > .card:only-child { flex-basis: 100%; }
+    .swipe-grid > .card { flex: 0 0 85%; scroll-snap-align: start; }
+    .swipe-grid > .card:only-child { flex-basis: 100%; }
   }
 
   
