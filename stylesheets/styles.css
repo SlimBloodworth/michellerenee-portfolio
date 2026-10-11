@@ -449,6 +449,42 @@
   .card-link svg { width: 14px; height: 14px; transition: transform var(--transition); }
   .card-link:hover svg { transform: translateX(3px); }
 
+  
+  /* ----- CERTIFICATIONS — thumbnail ----- */
+  .cert-thumb {
+    display: block;
+    width: 100%;
+    padding: 0;
+    background: none;
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    cursor: zoom-in;
+    transition: border-color var(--transition);
+  }
+  .cert-thumb:hover { border-color: var(--accent); }
+  .cert-thumb img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 1;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  
+  /* Mobile: certificates become a swipeable row (scroll-snap, no JS) */
+  @media (max-width: 699px) {
+    .cert-grid {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-block: 8px 16px;
+    }
+    .cert-grid > .card { flex: 0 0 85%; scroll-snap-align: start; }
+    .cert-grid > .card:only-child { flex-basis: 100%; }
+  }
+
  /* ----- WORKSHOPS — timeline ----- */
   .timeline { display: flex; flex-direction: column; gap: 0; border-left: 2px solid var(--border); margin-left: 8px; }
   .timeline-item { position: relative; padding: 0 0 40px 32px; }
