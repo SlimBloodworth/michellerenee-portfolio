@@ -472,17 +472,17 @@
   }
 
   
-  /* Mobile: certificates become a swipeable row (scroll-snap, no JS) */
+  /* Mobile: any grid with .swipe-grid becomes a swipeable row (scroll-snap, no JS) */
   @media (max-width: 699px) {
-    .cert-grid {
+    .swipe-grid {
       display: flex;
       gap: 16px;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       padding-block: 8px 16px;
     }
-    .cert-grid > .card { flex: 0 0 85%; scroll-snap-align: start; }
-    .cert-grid > .card:only-child { flex-basis: 100%; }
+    .swipe-grid > .card { flex: 0 0 85%; scroll-snap-align: start; }
+    .swipe-grid > .card:only-child { flex-basis: 100%; }
   }
 
   
@@ -519,6 +519,25 @@
     cursor: pointer;
   }
   .cert-dialog-close svg { width: 20px; height: 20px; }
+
+  
+  /* ----- TESTIMONIALS ----- */
+  /*.testimonial-card { margin: 0; }*/
+  .testimonial-card { margin: 0; scroll-margin-top: calc(var(--nav-h) + 16px); }
+  .testimonial-card blockquote { margin: 0; display: flex; flex-direction: column; gap: 14px; }
+  .testimonial-toggle { background: none; border: 0; padding: 0; cursor: pointer; align-self: flex-start; }
+  .testimonial-card figcaption {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+  }
+  .testimonial-card figcaption strong { font-family: var(--font-display); color: var(--text); }
+
+    .testimonial-more p + p { margin-top: 14px; }
+  /* While a quote is expanded, let cards keep their own height instead of stretching to match */
+  .card-grid:has(.testimonial-toggle[aria-expanded="true"]) { align-items: start; }
 
  /* ----- WORKSHOPS — timeline ----- */
   .timeline { display: flex; flex-direction: column; gap: 0; border-left: 2px solid var(--border); margin-left: 8px; }
