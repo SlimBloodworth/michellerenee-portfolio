@@ -173,6 +173,25 @@
         if (e.target === certDialog) { certDialog.close(); }
       });
     }
+        /* ---------- TESTIMONIAL READ MORE ---------- */
+    var toggles = document.querySelectorAll('.testimonial-toggle');
+
+    function setExpanded(btn, open) {
+      btn.setAttribute('aria-expanded', String(open));
+      btn.textContent = open ? 'Read less' : 'Read more';
+      document.getElementById(btn.getAttribute('aria-controls')).hidden = !open;
+    }
+
+    toggles.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var open = btn.getAttribute('aria-expanded') !== 'true';
+        toggles.forEach(function (other) { setExpanded(other, false); });
+        setExpanded(btn, open);
+        if (!open) {
+          btn.closest('.testimonial-card').scrollIntoView({ block: 'nearest', behavior: 'instant' });
+        }
+      });
+    });
  
     /* ---------- FOOTER YEAR ---------- */
     document.getElementById('year').textContent = new Date().getFullYear();
