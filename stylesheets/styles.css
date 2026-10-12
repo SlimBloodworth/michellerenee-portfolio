@@ -520,6 +520,20 @@
   }
   .cert-dialog-close svg { width: 20px; height: 20px; }
 
+  
+  /* ----- TESTIMONIALS ----- */
+  .testimonial-card { margin: 0; }
+  .testimonial-card blockquote { margin: 0; display: flex; flex-direction: column; gap: 14px; }
+  .testimonial-toggle { background: none; border: 0; padding: 0; cursor: pointer; align-self: flex-start; }
+  .testimonial-card figcaption {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+  }
+  .testimonial-card figcaption strong { font-family: var(--font-display); color: var(--text); }
+
  /* ----- WORKSHOPS — timeline ----- */
   .timeline { display: flex; flex-direction: column; gap: 0; border-left: 2px solid var(--border); margin-left: 8px; }
   .timeline-item { position: relative; padding: 0 0 40px 32px; }
