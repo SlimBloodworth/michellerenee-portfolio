@@ -159,7 +159,7 @@
     if (certDialog) {
       var certDialogImg = document.getElementById('certDialogImg');
 
-      document.querySelectorAll('.cert-thumb').forEach(function (thumb) {
+      document.querySelectorAll('.media-thumb').forEach(function (thumb) {
         thumb.addEventListener('click', function () {
           var img = thumb.querySelector('img');
           certDialogImg.src = img.src;

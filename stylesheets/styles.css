@@ -451,7 +451,7 @@
 
   
   /* ----- CERTIFICATIONS — thumbnail ----- */
-  .cert-thumb {
+  .media-thumb {
     display: block;
     width: 100%;
     padding: 0;
@@ -462,8 +462,8 @@
     cursor: zoom-in;
     transition: border-color var(--transition);
   }
-  .cert-thumb:hover { border-color: var(--accent); }
-  .cert-thumb img {
+  .media-thumb:hover { border-color: var(--accent); }
+  .media-thumb img {
     width: 100%;
     height: auto;
     aspect-ratio: 2 / 1;
@@ -487,7 +487,7 @@
 
   
   /* ----- CERTIFICATIONS — full-size dialog ----- */
-  .cert-dialog {
+  .media-dialog {
     width: min(92vw, 1100px);
     padding: 0;
     color: var(--text);
@@ -496,14 +496,14 @@
     border-radius: var(--radius-md);
     overflow: hidden;
   }
-  .cert-dialog::backdrop { background: rgba(0, 8, 20, 0.8); }
-  .cert-dialog img {
+  .media-dialog::backdrop { background: rgba(0, 8, 20, 0.8); }
+  .media-dialog img {
     width: 100%;
     height: auto;
     max-height: 92vh;
     object-fit: contain;
   }
-  .cert-dialog-close {
+  .media-dialog-close {
     position: absolute;
     top: 12px;
     right: 12px;
@@ -518,7 +518,7 @@
     color: var(--text);
     cursor: pointer;
   }
-  .cert-dialog-close svg { width: 20px; height: 20px; }
+  .media-dialog-close svg { width: 20px; height: 20px; }
 
   
   /* ----- TESTIMONIALS ----- */
