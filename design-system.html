@@ -313,6 +313,37 @@
   </div>
 </section>
 
+<!-- ===== MEDIA DIALOG ===== -->
+<section class="guide-section">
+  <div class="container">
+    <p class="eyebrow">Components</p>
+    <h2>Media dialog</h2>
+    <p class="intro">A native <code>&lt;dialog&gt;</code> for full-size images and demo videos. These buttons open the real thing: close it with the X, <kbd>Esc</kbd>, or by clicking outside.</p>
+    <div style="display:flex; flex-wrap:wrap; gap:14px;">
+      <button type="button" class="btn btn-ghost" data-open-dialog="demoImageDialog">Open image dialog</button>
+      <button type="button" class="btn btn-ghost" data-open-dialog="demoVideoDialog">Open video dialog</button>
+    </div>
+
+    <dialog class="media-dialog" id="demoImageDialog" aria-label="Full-size certificate">
+      <form method="dialog">
+        <button class="media-dialog-close" aria-label="Close certificate view">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </form>
+      <img src="assets/certifications/gitgithubcert020123.png" alt="Udemy certificate of completion for The Git &amp; GitHub Bootcamp, taught by Colt Steele, awarded to Michelle Bloodworth on February 1, 2023.">
+    </dialog>
+
+    <dialog class="media-dialog media-dialog--portrait" id="demoVideoDialog" aria-label="Demo video">
+      <form method="dialog">
+        <button class="media-dialog-close" aria-label="Close video">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </form>
+      <video controls loop playsinline preload="none" src="assets/projects/player-profile-demo.mp4" poster="assets/projects/player-profile-poster.webp"></video>
+    </dialog>
+  </div>
+</section>
+
 <!-- ===== NAV UNDERLINE ===== -->
 <section class="guide-section">
   <div class="container">
@@ -418,6 +449,19 @@
     });
   })();
 </script>
-
+<script>
+  // Demo-only: opens the dialogs above. The real site does this in app/script.js.
+  document.querySelectorAll('[data-open-dialog]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.getElementById(btn.dataset.openDialog).showModal();
+    });
+  });
+  document.querySelectorAll('dialog.media-dialog').forEach(function (dialog) {
+    dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
+    dialog.addEventListener('close', function () {
+      dialog.querySelectorAll('video').forEach(function (v) { v.pause(); });
+    });
+  });
+</script>
 </body>
 </html>

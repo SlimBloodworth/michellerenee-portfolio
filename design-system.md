@@ -303,6 +303,8 @@ a.media-thumb, .media-thumb[data-video] { cursor: pointer; }
 ```
 **Accessibility:** write descriptive `alt` text, give buttons an `aria-label` that says the action, and mark the play badge `aria-hidden="true"` because it's decoration. Keep the title, date and other details as real text in the card so it makes sense without the image.
 
+
+
 ### Nav underline (the shared `.nav-item` component)
 This is the one worth understanding well — it's used by **both** the desktop nav and the footer link columns, so the hover/focus/active behavior only has to be written once.
 
