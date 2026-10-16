@@ -303,7 +303,49 @@ a.media-thumb, .media-thumb[data-video] { cursor: pointer; }
 ```
 **Accessibility:** write descriptive `alt` text, give buttons an `aria-label` that says the action, and mark the play badge `aria-hidden="true"` because it's decoration. Keep the title, date and other details as real text in the card so it makes sense without the image.
 
+### Media dialog
+A native `<dialog>` that shows a certificate image or plays a demo video. The browser handles dimming the page, trapping keyboard focus, and closing on **Esc**, so none of that is hand-written. Each page that needs one carries its own dialog (`#certDialog` on the home page, `#videoDialog` on My Work), and the matching `app/script.js` block does nothing on pages without it (`if (dialog) { … }`).
 
+```html
+<dialog class="media-dialog media-dialog--portrait" id="videoDialog" aria-label="Demo video">
+  <form method="dialog">
+    <button class="media-dialog-close" aria-label="Close video">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </form>
+  <video id="videoDialogPlayer" controls loop playsinline preload="none" poster="assets/projects/poster.webp"></video>
+</dialog>
+```
+For an image, swap the `<video>` for `<img id="certDialogImg" src="" alt="">` and drop `media-dialog--portrait` (a tall video gets a narrow dialog; a wide certificate gets the wide default).
+```css
+.media-dialog {
+  width: min(92vw, 1100px);
+  padding: 0;
+  color: var(--text);
+  background: var(--bg-elevated);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.media-dialog::backdrop { background: rgba(0, 8, 20, 0.8); }
+.media-dialog img { width: 100%; height: auto; max-height: 92vh; object-fit: contain; }
+.media-dialog-close {
+  position: absolute; top: 12px; right: 12px;
+  display: flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 999px;
+  border: 1px solid var(--card-border); background: var(--bg-elevated); color: var(--text); cursor: pointer;
+}
+.media-dialog-close svg { width: 20px; height: 20px; }
+.media-dialog--portrait { width: min(92vw, 420px); }
+.media-dialog video { display: block; width: 100%; height: auto; max-height: 88vh; background: var(--ink); }
+```
+How it behaves:
+- `showModal()` opens it (the thumbnail's click handler does this). The close button sits in a `<form method="dialog">`, so it closes the dialog without any JavaScript.
+- `padding: 0` means the only way to click the dialog element itself is the dark area outside the content, so `if (e.target === dialog) dialog.close()` closes on a backdrop click.
+- For video, a `close` listener pauses it and clears its `src`, so it stops no matter how the dialog was closed.
+- `preload="none"` means the video file isn't downloaded until someone opens it.
+
+**Accessibility:** give every dialog an `aria-label`, and give the close button its own `aria-label`. Keyboard users can reach the thumbnail, open the dialog with **Enter**, and close it with **Esc**. Focus returns to the thumbnail afterward.
 
 ### Nav underline (the shared `.nav-item` component)
 This is the one worth understanding well — it's used by **both** the desktop nav and the footer link columns, so the hover/focus/active behavior only has to be written once.
