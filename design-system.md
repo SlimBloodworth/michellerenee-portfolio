@@ -347,6 +347,35 @@ How it behaves:
 
 **Accessibility:** give every dialog an `aria-label`, and give the close button its own `aria-label`. Keyboard users can reach the thumbnail, open the dialog with **Enter**, and close it with **Esc**. Focus returns to the thumbnail afterward.
 
+### Swipe grid (mobile carousel)
+Adds `swipe-grid` next to `card-grid` to turn a row of cards into a horizontal swipe carousel on phones. It's CSS scroll-snap only, so no JavaScript and no library. It works for any cards: certificates, testimonials, projects. At 700px and wider it does nothing, and the normal grid takes over.
+```html
+<div class="card-grid cols-3 swipe-grid">
+  <article class="card">…</article>
+  <article class="card">…</article>
+</div>
+```
+```css
+@media (max-width: 699px) {
+  .swipe-grid {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-block: 8px 16px;
+  }
+  .swipe-grid > .card { flex: 0 0 85%; scroll-snap-align: start; }
+  .swipe-grid > .card:only-child { flex-basis: 100%; }
+}
+```
+How it behaves:
+- Cards are 85% wide, so a sliver of the next one peeks in. That sliver is the cue that you can swipe.
+- `scroll-snap-type: x mandatory` makes each swipe settle on a card instead of stopping halfway.
+- `:only-child` makes a lone card fill the full width, so it looks right while you only have one, and switches to the carousel layout automatically once you add a second.
+- `padding-block` gives the cards' hover lift and shadow room, because a scrolling container clips anything that sticks out of it.
+
+**Accessibility:** the row scrolls with a finger, a trackpad or the keyboard (focus a card's link or button and keep tabbing). Keep real text in every card so it doesn't depend on swiping to be understood.
+
 ### Nav underline (the shared `.nav-item` component)
 This is the one worth understanding well — it's used by **both** the desktop nav and the footer link columns, so the hover/focus/active behavior only has to be written once.
 
