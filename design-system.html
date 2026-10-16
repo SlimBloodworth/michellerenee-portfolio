@@ -280,6 +280,39 @@
   </div>
 </section>
 
+<!-- ===== MEDIA THUMBNAIL ===== -->
+<section class="guide-section">
+  <div class="container">
+    <p class="eyebrow">Components</p>
+    <h2>Media thumbnail &amp; play badge</h2>
+    <p class="intro">A bordered image at the top of a card. It can open a full-size image, play a demo video, or link out. These demos are static; the click behavior lives in <code>app/script.js</code>.</p>
+    <div class="card-grid cols-3">
+      <article class="card">
+        <button type="button" class="media-thumb" aria-label="View full-size certificate: The Git &amp; GitHub Bootcamp">
+          <img src="assets/certifications/gitgithubcert020123.png" width="1600" height="1190" loading="lazy" alt="Udemy certificate of completion for The Git &amp; GitHub Bootcamp.">
+        </button>
+        <span class="card-tag">Image dialog</span>
+        <p>Default crop: 2:1, anchored to the top.</p>
+      </article>
+      <article class="card">
+        <button type="button" class="media-thumb" data-video="assets/projects/player-profile-demo.mp4" aria-label="Watch demo video: Player Profile mobile app">
+          <img src="assets/projects/player-profile-poster.webp" width="480" height="966" loading="lazy" style="--thumb-ratio: 4 / 3; --thumb-pos: 50% 77%" alt="Player profile screen from the mobile app.">
+          <span class="play-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+        </button>
+        <span class="card-tag">Video dialog</span>
+        <p>Custom crop with <code>--thumb-ratio</code> and <code>--thumb-pos</code>, plus a play badge.</p>
+      </article>
+      <article class="card">
+        <a class="media-thumb" href="https://player-of-the-week-vote.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Open the live demo of Player of the Week: Fan Vote (opens in a new tab)">
+          <img src="assets/projects/voting-app-results.webp" width="1200" height="628" loading="lazy" style="--thumb-ratio: 4 / 3; --thumb-pos: 50% 50%" alt="Fan voting page with four player cards.">
+        </a>
+        <span class="card-tag">Link</span>
+        <p>A real link instead of a button: same look, pointer cursor.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- ===== NAV UNDERLINE ===== -->
 <section class="guide-section">
   <div class="container">

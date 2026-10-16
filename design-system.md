@@ -256,6 +256,53 @@ Used for project work and service offerings. `.card-grid.cols-3` gives a 3-up gr
 .card-tag { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
 ```
 
+### Media thumbnail (+ play badge)
+A bordered, clickable image at the top of a card. One component, three variants. Set `width` and `height` on every `<img>` so the page doesn't jump while it loads.
+
+- **Image dialog** (certificates): `<button class="media-thumb">`. `app/script.js` copies its image into `#certDialog`.
+- **Video dialog** (demo videos): `<button class="media-thumb" data-video="path.mp4">` with a `.play-badge`. `app/script.js` plays the file in `#videoDialog`.
+- **Link** (live demos): `<a class="media-thumb" href="…">`. Add `target="_blank" rel="noopener noreferrer"` for external links.
+
+The crop is per instance: set `--thumb-ratio` (default `2 / 1`) and `--thumb-pos` (default `top`) in an inline `style`.
+```html
+<button type="button" class="media-thumb" data-video="assets/projects/demo.mp4" aria-label="Watch demo video: Project name">
+  <img src="assets/projects/poster.webp" width="480" height="966" loading="lazy"
+       style="--thumb-ratio: 4 / 3; --thumb-pos: 50% 77%" alt="Describe what the picture shows.">
+  <span class="play-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+```
+```css
+.media-thumb {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  cursor: zoom-in;
+  transition: border-color var(--transition);
+}
+a.media-thumb, .media-thumb[data-video] { cursor: pointer; }
+.media-thumb:hover { border-color: var(--accent); }
+.media-thumb img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: var(--thumb-ratio, 2 / 1);
+  object-fit: cover;
+  object-position: var(--thumb-pos, top);
+}
+.play-badge {
+  position: absolute; top: 50%; left: 50%; translate: -50% -50%;
+  display: flex; align-items: center; justify-content: center;
+  width: 56px; height: 56px; border-radius: 999px;
+  background: var(--cta-bg); color: var(--cta-text); box-shadow: var(--shadow-soft);
+}
+.play-badge svg { width: 24px; height: 24px; margin-left: 3px; }
+```
+**Accessibility:** write descriptive `alt` text, give buttons an `aria-label` that says the action, and mark the play badge `aria-hidden="true"` because it's decoration. Keep the title, date and other details as real text in the card so it makes sense without the image.
+
 ### Nav underline (the shared `.nav-item` component)
 This is the one worth understanding well — it's used by **both** the desktop nav and the footer link columns, so the hover/focus/active behavior only has to be written once.
 
