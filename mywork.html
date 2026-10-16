@@ -85,6 +85,9 @@
 
     <div class="card-grid">
       <article class="card">
+        <a class="media-thumb" href="https://player-of-the-week-vote.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Open the live demo of Player of the Week: Fan Vote (opens in a new tab)">
+          <img src="assets/projects/voting-app-results.webp" width="1200" height="628" loading="lazy" style="--thumb-ratio: 4 / 3; --thumb-pos: 50% 50%" alt="Fan voting page titled Player of the Week with four player cards. After a vote, one card shows 100 percent and a Your Vote button, and the others show 0 percent.">
+        </a>
         <span class="card-tag">Full-Stack Concept</span>
         <h3>Player of the Week: Fan Vote</h3>
         <p>A fan-voting page where anyone can vote with no login and see live results the moment a vote is cast. It has a real one-to-many database, API routes that validate every request, and an accessible, responsive layout. A self-directed concept, not affiliated with or endorsed by Unrivaled or the WNBA.</p>
@@ -105,6 +108,10 @@
       </article>
 
       <article class="card">
+          <button type="button" class="media-thumb" data-video="assets/projects/player-profile-demo.mp4" aria-label="Watch demo video: Player Profile mobile app">
+          <img src="assets/projects/player-profile-poster.webp" width="480" height="966" loading="lazy" style="--thumb-ratio: 4 / 3; --thumb-pos: 50% 77%" alt="Player profile screen from the mobile app, with the player's photo, a points-per-game stat and a bottom tab bar.">
+          <span class="play-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+        </button>
         <span class="card-tag">Mobile Concept</span>
         <h3>Player Profile: Mobile App</h3>
         <p>A React Native screen built around a single player's profile. Three photos crossfade in place as you swipe, each paired with a stat callout that slides in from the side, with snap-to-image scrolling, page dots and a bottom tab bar. A self-directed concept, not affiliated with or endorsed by Unrivaled or the WNBA.</p>
@@ -156,6 +163,16 @@
   </section>
      </main>
      <!-- ^^ END MAIN CONTENT -->
+      
+    <!-- DEMO VIDEO VIEWER (filled in by script.js) -->
+    <dialog class="media-dialog media-dialog--portrait" id="videoDialog" aria-label="Demo video">
+      <form method="dialog">
+        <button class="media-dialog-close" aria-label="Close video">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </form>
+      <video id="videoDialogPlayer" controls loop playsinline preload="none" poster="assets/projects/player-profile-poster.webp"></video>
+    </dialog>
     <!----- FOOTER — sitemap + social links ----->
 <footer class="site-footer">
   <div class="container footer-grid">

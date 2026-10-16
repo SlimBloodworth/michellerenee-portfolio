@@ -159,7 +159,7 @@
     if (certDialog) {
       var certDialogImg = document.getElementById('certDialogImg');
 
-      document.querySelectorAll('.cert-thumb').forEach(function (thumb) {
+               document.querySelectorAll('.media-thumb:not([data-video])').forEach(function (thumb) {
         thumb.addEventListener('click', function () {
           var img = thumb.querySelector('img');
           certDialogImg.src = img.src;
@@ -173,6 +173,33 @@
         if (e.target === certDialog) { certDialog.close(); }
       });
     }
+        /* ---------- DEMO VIDEO VIEWER ---------- */
+    var videoDialog = document.getElementById('videoDialog');
+
+    if (videoDialog) {
+      var videoPlayer = document.getElementById('videoDialogPlayer');
+
+      document.querySelectorAll('.media-thumb[data-video]').forEach(function (thumb) {
+        thumb.addEventListener('click', function () {
+          videoPlayer.src = thumb.dataset.video;
+          videoDialog.showModal();
+          videoPlayer.play();
+        });
+      });
+
+      // Clicking the dark area outside the video closes the dialog
+      videoDialog.addEventListener('click', function (e) {
+        if (e.target === videoDialog) { videoDialog.close(); }
+      });
+
+      // However it closes (X, Esc, outside click), stop the video and release the file
+      videoDialog.addEventListener('close', function () {
+        videoPlayer.pause();
+        videoPlayer.removeAttribute('src');
+        videoPlayer.load();
+      });
+    }
+
         /* ---------- TESTIMONIAL READ MORE ---------- */
     var toggles = document.querySelectorAll('.testimonial-toggle');
 

@@ -447,11 +447,11 @@
     color: var(--accent); text-decoration: none; margin-top: 4px;
   }
   .card-link svg { width: 14px; height: 14px; transition: transform var(--transition); }
-  .card-link:hover svg { transform: translateX(3px); }
-
+  .card-link:hover svg { transform: translateX(3px); }  
   
-  /* ----- CERTIFICATIONS — thumbnail ----- */
-  .cert-thumb {
+    /* ----- MEDIA THUMBNAIL — certificates, project demos ----- */
+  .media-thumb {
+    position: relative;
     display: block;
     width: 100%;
     padding: 0;
@@ -462,14 +462,31 @@
     cursor: zoom-in;
     transition: border-color var(--transition);
   }
-  .cert-thumb:hover { border-color: var(--accent); }
-  .cert-thumb img {
+  a.media-thumb, .media-thumb[data-video] { cursor: pointer; }
+  .media-thumb:hover { border-color: var(--accent); }
+  .media-thumb img {
     width: 100%;
     height: auto;
-    aspect-ratio: 2 / 1;
+    aspect-ratio: var(--thumb-ratio, 2 / 1);
     object-fit: cover;
-    object-position: top;
+    object-position: var(--thumb-pos, top);
   }
+  .play-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 999px;
+    background: var(--cta-bg);
+    color: var(--cta-text);
+    box-shadow: var(--shadow-soft);
+  }
+  .play-badge svg { width: 24px; height: 24px; margin-left: 3px; }
 
   
   /* Mobile: any grid with .swipe-grid becomes a swipeable row (scroll-snap, no JS) */
@@ -486,8 +503,8 @@
   }
 
   
-  /* ----- CERTIFICATIONS — full-size dialog ----- */
-  .cert-dialog {
+       /* ----- MEDIA — full-size dialog (certificates, demo video) ----- */
+  .media-dialog {
     width: min(92vw, 1100px);
     padding: 0;
     color: var(--text);
@@ -496,14 +513,14 @@
     border-radius: var(--radius-md);
     overflow: hidden;
   }
-  .cert-dialog::backdrop { background: rgba(0, 8, 20, 0.8); }
-  .cert-dialog img {
+  .media-dialog::backdrop { background: rgba(0, 8, 20, 0.8); }
+  .media-dialog img {
     width: 100%;
     height: auto;
     max-height: 92vh;
     object-fit: contain;
   }
-  .cert-dialog-close {
+  .media-dialog-close {
     position: absolute;
     top: 12px;
     right: 12px;
@@ -518,7 +535,17 @@
     color: var(--text);
     cursor: pointer;
   }
-  .cert-dialog-close svg { width: 20px; height: 20px; }
+  .media-dialog-close svg { width: 20px; height: 20px; }
+
+  
+  .media-dialog--portrait { width: min(92vw, 420px); }
+  .media-dialog video {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 88vh;
+    background: var(--ink);
+  }
 
   
   /* ----- TESTIMONIALS ----- */
