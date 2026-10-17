@@ -440,6 +440,37 @@ How it behaves:
 
 **Accessibility:** a real `<button>` with `aria-expanded` and `aria-controls` is announced as "collapsed" or "expanded" and works with **Enter** and **Space**. The extra text uses the `hidden` attribute, so it's out of the reading order until opened. Always keep the full quote in the HTML, never in an image.
 
+### Certificate card (repeatable)
+A `.card` for one certification, built from pieces documented above: a **media thumbnail**, the **card tag**, **chips**, and a **card link**. Nothing new in the CSS. To add another certificate, copy the whole `<article>` and change the text, the image and the link.
+```html
+<div class="card-grid cols-3 swipe-grid">
+  <article class="card cert-card">
+    <button type="button" class="media-thumb" aria-label="View full-size certificate: Course title">
+      <img src="assets/certifications/file.png" width="1600" height="1190" loading="lazy"
+           alt="Issuer certificate of completion for Course title, taught by Instructor, awarded to Name on date.">
+    </button>
+    <span class="card-tag">Issuer</span>
+    <h3>Course title</h3>
+    <p>Instructor: Name. One line on what it covers and why it matters.</p>
+    <div class="card-meta">
+      <span class="chip"><time datetime="2023-02-01">Feb 1, 2023</time></span>
+      <span class="chip">17 hours</span>
+    </div>
+    <a class="card-link" href="https://issuer.example/verify/ID" target="_blank" rel="noopener noreferrer">
+      Verify credential <span class="visually-hidden">(opens in a new tab)</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </article>
+</div>
+```
+Notes:
+- `cert-card` is a hook class with no CSS of its own. It lets you target certificate cards later without touching other cards.
+- The thumbnail opens the image dialog (`#certDialog`, see **Media dialog**). `app/script.js` copies the thumbnail's `src` and `alt` into it, so the full-size view always matches the card.
+- `swipe-grid` makes the row a swipeable carousel on phones, and `:only-child` keeps a single certificate full-width until you add more.
+- `<time datetime="YYYY-MM-DD">` gives the date in a machine-readable form while the chip shows a friendly one.
+
+**Accessibility:** title, issuer, date and hours are real HTML text, so the card makes sense without the image. The image's `alt` describes the certificate itself, and the button's `aria-label` says the action. The external link carries a visually hidden "(opens in a new tab)" so screen reader users know what to expect.
+
 ### Nav underline (the shared `.nav-item` component)
 This is the one worth understanding well — it's used by **both** the desktop nav and the footer link columns, so the hover/focus/active behavior only has to be written once.
 
