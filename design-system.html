@@ -370,6 +370,52 @@
   </div>
 </section>
 
+<!-- ===== TESTIMONIAL CARD ===== -->
+<section class="guide-section">
+  <div class="container">
+    <p class="eyebrow">Components</p>
+    <h2>Testimonial card</h2>
+    <p class="intro">A quote with an excerpt and a Read more toggle. Open one and the others close; a short quote has no button. The text below is placeholder copy.</p>
+    <div class="card-grid">
+      <figure class="card testimonial-card">
+        <blockquote>
+          <p>The opening of a longer quote, always visible, so a visitor gets the gist at a glance.</p>
+          <div class="testimonial-more" id="demo-quote-1" hidden>
+            <p>The rest of the quote, revealed by the button. It can run to several paragraphs.</p>
+            <p>A second paragraph shows the spacing between paragraphs.</p>
+          </div>
+        </blockquote>
+        <button type="button" class="card-link testimonial-toggle" aria-expanded="false" aria-controls="demo-quote-1">Read more</button>
+        <figcaption>
+          <strong>Jane Doe</strong>
+          <span>Owner, Example Company</span>
+        </figcaption>
+      </figure>
+      <figure class="card testimonial-card">
+        <blockquote>
+          <p>Another long quote with its own excerpt.</p>
+          <div class="testimonial-more" id="demo-quote-2" hidden>
+            <p>More words that stay hidden until the button is pressed.</p>
+          </div>
+        </blockquote>
+        <button type="button" class="card-link testimonial-toggle" aria-expanded="false" aria-controls="demo-quote-2">Read more</button>
+        <figcaption>
+          <strong>Sam Rivera</strong>
+        </figcaption>
+      </figure>
+      <figure class="card testimonial-card">
+        <blockquote>
+          <p>A short quote needs no button.</p>
+        </blockquote>
+        <figcaption>
+          <strong>Alex Chen</strong>
+          <span>Founder, Another Company</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <!-- ===== NAV UNDERLINE ===== -->
 <section class="guide-section">
   <div class="container">
@@ -488,6 +534,29 @@
       dialog.querySelectorAll('video').forEach(function (v) { v.pause(); });
     });
   });
+</script>
+<script>
+  // Demo-only copy of the Read more toggle. The real site does this in app/script.js.
+  (function () {
+    var toggles = document.querySelectorAll('.testimonial-toggle');
+
+    function setExpanded(btn, open) {
+      btn.setAttribute('aria-expanded', String(open));
+      btn.textContent = open ? 'Read less' : 'Read more';
+      document.getElementById(btn.getAttribute('aria-controls')).hidden = !open;
+    }
+
+    toggles.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var open = btn.getAttribute('aria-expanded') !== 'true';
+        toggles.forEach(function (other) { setExpanded(other, false); });
+        setExpanded(btn, open);
+        if (!open) {
+          btn.closest('.testimonial-card').scrollIntoView({ block: 'nearest', behavior: 'instant' });
+        }
+      });
+    });
+  })();
 </script>
 </body>
 </html>

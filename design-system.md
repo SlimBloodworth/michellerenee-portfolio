@@ -376,6 +376,70 @@ How it behaves:
 
 **Accessibility:** the row scrolls with a finger, a trackpad or the keyboard (focus a card's link or button and keep tabbing). Keep real text in every card so it doesn't depend on swiping to be understood.
 
+### Testimonial card (+ Read more toggle)
+A `.card` built from a `<figure>`, so a screen reader announces the quote and who said it. Long quotes show an opening excerpt, and a **Read more** button reveals the rest. Opening one card closes the others (accordion), and closing a card scrolls it back into view so the page doesn't jump.
+```html
+<div class="card-grid swipe-grid cols-3">
+  <figure class="card testimonial-card">
+    <blockquote>
+      <p>The opening of the quote, always visible.</p>
+      <div class="testimonial-more" id="quote-1-more" hidden>
+        <p>The rest of the quote, revealed by the button.</p>
+      </div>
+    </blockquote>
+    <button type="button" class="card-link testimonial-toggle" aria-expanded="false" aria-controls="quote-1-more">Read more</button>
+    <figcaption>
+      <strong>Name</strong>
+      <span>Role, Company</span>
+    </figcaption>
+  </figure>
+</div>
+```
+A short quote skips the `.testimonial-more` block and the button entirely.
+```css
+.testimonial-card { margin: 0; scroll-margin-top: calc(var(--nav-h) + 16px); }
+.testimonial-card blockquote { margin: 0; display: flex; flex-direction: column; gap: 14px; }
+.testimonial-toggle { background: none; border: 0; padding: 0; cursor: pointer; align-self: flex-start; }
+.testimonial-card figcaption {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+.testimonial-card figcaption strong { font-family: var(--font-display); color: var(--text); }
+.testimonial-more p + p { margin-top: 14px; }
+/* While a quote is expanded, cards keep their own height instead of stretching to match */
+.card-grid:has(.testimonial-toggle[aria-expanded="true"]) { align-items: start; }
+```
+```js
+var toggles = document.querySelectorAll('.testimonial-toggle');
+
+function setExpanded(btn, open) {
+  btn.setAttribute('aria-expanded', String(open));
+  btn.textContent = open ? 'Read less' : 'Read more';
+  document.getElementById(btn.getAttribute('aria-controls')).hidden = !open;
+}
+
+toggles.forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var open = btn.getAttribute('aria-expanded') !== 'true';
+    toggles.forEach(function (other) { setExpanded(other, false); });
+    setExpanded(btn, open);
+    if (!open) {
+      btn.closest('.testimonial-card').scrollIntoView({ block: 'nearest', behavior: 'instant' });
+    }
+  });
+});
+```
+How it behaves:
+- `margin: 0` on the card and blockquote removes the browser's default 40px side margins, which otherwise squeeze the text into a narrow column.
+- The button reuses `.card-link` for its look. `.testimonial-toggle` only strips the browser's default button styling.
+- `scrollIntoView` uses `behavior: 'instant'` because the site turns on smooth scrolling, and a smooth scroll after the page shrinks makes the screen visibly jump twice. `scroll-margin-top` keeps the sticky header from covering the card.
+- `setExpanded` is written once and used for both opening and closing, so the label, `aria-expanded` and the hidden text can't get out of sync.
+
+**Accessibility:** a real `<button>` with `aria-expanded` and `aria-controls` is announced as "collapsed" or "expanded" and works with **Enter** and **Space**. The extra text uses the `hidden` attribute, so it's out of the reading order until opened. Always keep the full quote in the HTML, never in an image.
+
 ### Nav underline (the shared `.nav-item` component)
 This is the one worth understanding well — it's used by **both** the desktop nav and the footer link columns, so the hover/focus/active behavior only has to be written once.
 
