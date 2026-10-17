@@ -33,6 +33,8 @@ Users should be able to:
 ### Links
 
 - [michellerenee.dev](https://michellerenee.dev)
+- [Live design system](https://michellerenee.dev/design-system.html) - Interactive version with the light/dark toggle and working component demos
+- [Design system notes](./design-system.md) - Tokens, components and code
 
 ## My process
 
@@ -76,7 +78,7 @@ Users should be able to:
 
 ## Author
 
-- Website - [micellerenee.dev](https://michellerenee.dev)
+- Website - [michellerenee.dev](https://michellerenee.dev)
 - CodePen - [@slimbloodworth](https://codepen.io/slimbloodworth)
 - LinkedIn - [Michelle Renee](https://www.linkedin.com/in/michelle-renee-99b455187/)
 - GitHub - [@slimbloodworth](https://github.com/SlimBloodworth)
