@@ -14,6 +14,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Michelle Renee Bloodworth Portfolio</title>
     <!-- EXTERNAL STYLESHEETS-->
+         <!-- Set the saved theme before first paint so the page never flashes the wrong colors -->
+    <script>
+      (function () {
+        var stored = localStorage.getItem('theme-preference') || 'system';
+        var resolved = stored === 'system'
+          ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+          : stored;
+        document.documentElement.setAttribute('data-theme', resolved);
+        document.documentElement.setAttribute('data-theme-preference', stored);
+      })();
+    </script>
     <!-- EXTERNAL STYLESHEETS-->   
     <link rel="stylesheet" href="stylesheets/styles.css">
     <!-- FONTS -->
