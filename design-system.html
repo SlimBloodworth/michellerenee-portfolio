@@ -16,7 +16,7 @@
   })();
 </script>
 
-<link rel="stylesheet" href="stylesheets/mainStyles.css">
+   <link rel="stylesheet" href="stylesheets/styles.css">
 <link rel="preconnect" href="https://api.fontshare.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -121,6 +121,7 @@
   .chip { display: inline-flex; align-items: center; gap: 6px; background: var(--chip-bg); color: var(--text); border: 1px solid var(--card-border); padding: 8px 14px; border-radius: 999px; font-size: 0.88rem; font-weight: 500; }
 
   .card-grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+       @media (max-width: 699px) { .card-grid.swipe-grid { display: flex; gap: 16px; } }
   .card { background: var(--bg-elevated); border: 1px solid var(--card-border); border-radius: var(--radius-md); padding: 24px; display: flex; flex-direction: column; gap: 12px; transition: transform var(--transition), box-shadow var(--transition); }
   .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-soft); }
   .card-tag { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
@@ -280,6 +281,169 @@
   </div>
 </section>
 
+<!-- ===== MEDIA THUMBNAIL ===== -->
+<section class="guide-section">
+  <div class="container">
+    <p class="eyebrow">Components</p>
+    <h2>Media thumbnail &amp; play badge</h2>
+    <p class="intro">A bordered image at the top of a card. It can open a full-size image, play a demo video, or link out. These demos are static; the click behavior lives in <code>app/script.js</code>.</p>
+    <div class="card-grid cols-3">
+      <article class="card">
+        <button type="button" class="media-thumb" aria-label="View full-size certificate: The Git &amp; GitHub Bootcamp">
+          <img src="assets/certifications/gitgithubcert020123.png" width="1600" height="1190" loading="lazy" alt="Udemy certificate of completion for The Git &amp; GitHub Bootcamp.">
+        </button>
+        <span class="card-tag">Image dialog</span>
+        <p>Default crop: 2:1, anchored to the top.</p>
+      </article>
+      <article class="card">
+        <button type="button" class="media-thumb" data-video="assets/projects/player-profile-demo.mp4" aria-label="Watch demo video: Player Profile mobile app">
+          <img src="assets/projects/player-profile-poster.webp" width="480" height="966" loading="lazy" style="--thumb-ratio: 4 / 3; --thumb-pos: 50% 77%" alt="Player profile screen from the mobile app.">
+          <span class="play-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+        </button>
+        <span class="card-tag">Video dialog</span>
+        <p>Custom crop with <code>--thumb-ratio</code> and <code>--thumb-pos</code>, plus a play badge.</p>
+      </article>
+      <article class="card">
+        <a class="media-thumb" href="https://player-of-the-week-vote.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Open the live demo of Player of the Week: Fan Vote (opens in a new tab)">
+          <img src="assets/projects/voting-app-results.webp" width="1200" height="628" loading="lazy" style="--thumb-ratio: 4 / 3; --thumb-pos: 50% 50%" alt="Fan voting page with four player cards.">
+        </a>
+        <span class="card-tag">Link</span>
+        <p>A real link instead of a button: same look, pointer cursor.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MEDIA DIALOG ===== -->
+<section class="guide-section">
+  <div class="container">
+    <p class="eyebrow">Components</p>
+    <h2>Media dialog</h2>
+    <p class="intro">A native <code>&lt;dialog&gt;</code> for full-size images and demo videos. These buttons open the real thing: close it with the X, <kbd>Esc</kbd>, or by clicking outside.</p>
+    <div style="display:flex; flex-wrap:wrap; gap:14px;">
+      <button type="button" class="btn btn-ghost" data-open-dialog="demoImageDialog">Open image dialog</button>
+      <button type="button" class="btn btn-ghost" data-open-dialog="demoVideoDialog">Open video dialog</button>
+    </div>
+
+    <dialog class="media-dialog" id="demoImageDialog" aria-label="Full-size certificate">
+      <form method="dialog">
+        <button class="media-dialog-close" aria-label="Close certificate view">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </form>
+      <img src="assets/certifications/gitgithubcert020123.png" alt="Udemy certificate of completion for The Git &amp; GitHub Bootcamp, taught by Colt Steele, awarded to Michelle Bloodworth on February 1, 2023.">
+    </dialog>
+
+    <dialog class="media-dialog media-dialog--portrait" id="demoVideoDialog" aria-label="Demo video">
+      <form method="dialog">
+        <button class="media-dialog-close" aria-label="Close video">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </form>
+      <video controls loop playsinline preload="none" src="assets/projects/player-profile-demo.mp4" poster="assets/projects/player-profile-poster.webp"></video>
+    </dialog>
+  </div>
+</section>
+
+<!-- ===== SWIPE GRID ===== -->
+<section class="guide-section">
+  <div class="container">
+    <p class="eyebrow">Components</p>
+    <h2>Swipe grid</h2>
+    <p class="intro">On phones (under 700px), a <code>.swipe-grid</code> becomes a swipeable row. Shrink your browser window, or use phone view (<kbd>F12</kbd>, then <kbd>Ctrl+Shift+M</kbd>), and drag sideways. On wider screens it's an ordinary grid.</p>
+    <div class="card-grid swipe-grid">
+      <article class="card">
+        <span class="card-tag">Card one</span>
+        <h3>Swipe to see more</h3>
+        <p>A sliver of the next card peeks in as a cue.</p>
+      </article>
+      <article class="card">
+        <span class="card-tag">Card two</span>
+        <h3>Snaps into place</h3>
+        <p>Each swipe settles on a card instead of stopping halfway.</p>
+      </article>
+      <article class="card">
+        <span class="card-tag">Card three</span>
+        <h3>No JavaScript</h3>
+        <p>Pure CSS scroll-snap.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIAL CARD ===== -->
+<section class="guide-section">
+  <div class="container">
+    <p class="eyebrow">Components</p>
+    <h2>Testimonial card</h2>
+    <p class="intro">A quote with an excerpt and a Read more toggle. Open one and the others close; a short quote has no button. The text below is placeholder copy.</p>
+    <div class="card-grid">
+      <figure class="card testimonial-card">
+        <blockquote>
+          <p>The opening of a longer quote, always visible, so a visitor gets the gist at a glance.</p>
+          <div class="testimonial-more" id="demo-quote-1" hidden>
+            <p>The rest of the quote, revealed by the button. It can run to several paragraphs.</p>
+            <p>A second paragraph shows the spacing between paragraphs.</p>
+          </div>
+        </blockquote>
+        <button type="button" class="card-link testimonial-toggle" aria-expanded="false" aria-controls="demo-quote-1">Read more</button>
+        <figcaption>
+          <strong>Jane Doe</strong>
+          <span>Owner, Example Company</span>
+        </figcaption>
+      </figure>
+      <figure class="card testimonial-card">
+        <blockquote>
+          <p>Another long quote with its own excerpt.</p>
+          <div class="testimonial-more" id="demo-quote-2" hidden>
+            <p>More words that stay hidden until the button is pressed.</p>
+          </div>
+        </blockquote>
+        <button type="button" class="card-link testimonial-toggle" aria-expanded="false" aria-controls="demo-quote-2">Read more</button>
+        <figcaption>
+          <strong>Sam Rivera</strong>
+        </figcaption>
+      </figure>
+      <figure class="card testimonial-card">
+        <blockquote>
+          <p>A short quote needs no button.</p>
+        </blockquote>
+        <figcaption>
+          <strong>Alex Chen</strong>
+          <span>Founder, Another Company</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CERTIFICATE CARD ===== -->
+<section class="guide-section">
+  <div class="container">
+    <p class="eyebrow">Components</p>
+    <h2>Certificate card</h2>
+    <p class="intro">A repeatable card for one certification. It combines the media thumbnail, card tag, chips and card link, with no new CSS. Copy the whole card to add another.</p>
+    <div class="card-grid" style="max-width: 380px;">
+      <article class="card cert-card">
+        <button type="button" class="media-thumb" aria-label="View full-size certificate: The Git &amp; GitHub Bootcamp">
+          <img src="assets/certifications/gitgithubcert020123.png" width="1600" height="1190" loading="lazy" alt="Udemy certificate of completion for The Git &amp; GitHub Bootcamp, taught by Colt Steele, awarded to Michelle Bloodworth on February 1, 2023.">
+        </button>
+        <span class="card-tag">Udemy</span>
+        <h3>The Git &amp; GitHub Bootcamp</h3>
+        <p>Instructor: Colt Steele. Covers Git and GitHub fundamentals, including pull requests.</p>
+        <div class="card-meta">
+          <span class="chip"><time datetime="2023-02-01">Feb 1, 2023</time></span>
+          <span class="chip">17 hours</span>
+        </div>
+        <a class="card-link" href="https://www.udemy.com/certificate/UC-6d43caf5-24f3-4e73-a268-4b5af4a4c3b2/" target="_blank" rel="noopener noreferrer">
+          Verify credential <span class="visually-hidden">(opens in a new tab)</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- ===== NAV UNDERLINE ===== -->
 <section class="guide-section">
   <div class="container">
@@ -385,6 +549,42 @@
     });
   })();
 </script>
+<script>
+  // Demo-only: opens the dialogs above. The real site does this in app/script.js.
+  document.querySelectorAll('[data-open-dialog]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.getElementById(btn.dataset.openDialog).showModal();
+    });
+  });
+  document.querySelectorAll('dialog.media-dialog').forEach(function (dialog) {
+    dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
+    dialog.addEventListener('close', function () {
+      dialog.querySelectorAll('video').forEach(function (v) { v.pause(); });
+    });
+  });
+</script>
+<script>
+  // Demo-only copy of the Read more toggle. The real site does this in app/script.js.
+  (function () {
+    var toggles = document.querySelectorAll('.testimonial-toggle');
 
+    function setExpanded(btn, open) {
+      btn.setAttribute('aria-expanded', String(open));
+      btn.textContent = open ? 'Read less' : 'Read more';
+      document.getElementById(btn.getAttribute('aria-controls')).hidden = !open;
+    }
+
+    toggles.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var open = btn.getAttribute('aria-expanded') !== 'true';
+        toggles.forEach(function (other) { setExpanded(other, false); });
+        setExpanded(btn, open);
+        if (!open) {
+          btn.closest('.testimonial-card').scrollIntoView({ block: 'nearest', behavior: 'instant' });
+        }
+      });
+    });
+  })();
+</script>
 </body>
 </html>

@@ -256,6 +256,221 @@ Used for project work and service offerings. `.card-grid.cols-3` gives a 3-up gr
 .card-tag { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
 ```
 
+### Media thumbnail (+ play badge)
+A bordered, clickable image at the top of a card. One component, three variants. Set `width` and `height` on every `<img>` so the page doesn't jump while it loads.
+
+- **Image dialog** (certificates): `<button class="media-thumb">`. `app/script.js` copies its image into `#certDialog`.
+- **Video dialog** (demo videos): `<button class="media-thumb" data-video="path.mp4">` with a `.play-badge`. `app/script.js` plays the file in `#videoDialog`.
+- **Link** (live demos): `<a class="media-thumb" href="…">`. Add `target="_blank" rel="noopener noreferrer"` for external links.
+
+The crop is per instance: set `--thumb-ratio` (default `2 / 1`) and `--thumb-pos` (default `top`) in an inline `style`.
+```html
+<button type="button" class="media-thumb" data-video="assets/projects/demo.mp4" aria-label="Watch demo video: Project name">
+  <img src="assets/projects/poster.webp" width="480" height="966" loading="lazy"
+       style="--thumb-ratio: 4 / 3; --thumb-pos: 50% 77%" alt="Describe what the picture shows.">
+  <span class="play-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+```
+```css
+.media-thumb {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  cursor: zoom-in;
+  transition: border-color var(--transition);
+}
+a.media-thumb, .media-thumb[data-video] { cursor: pointer; }
+.media-thumb:hover { border-color: var(--accent); }
+.media-thumb img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: var(--thumb-ratio, 2 / 1);
+  object-fit: cover;
+  object-position: var(--thumb-pos, top);
+}
+.play-badge {
+  position: absolute; top: 50%; left: 50%; translate: -50% -50%;
+  display: flex; align-items: center; justify-content: center;
+  width: 56px; height: 56px; border-radius: 999px;
+  background: var(--cta-bg); color: var(--cta-text); box-shadow: var(--shadow-soft);
+}
+.play-badge svg { width: 24px; height: 24px; margin-left: 3px; }
+```
+**Accessibility:** write descriptive `alt` text, give buttons an `aria-label` that says the action, and mark the play badge `aria-hidden="true"` because it's decoration. Keep the title, date and other details as real text in the card so it makes sense without the image.
+
+### Media dialog
+A native `<dialog>` that shows a certificate image or plays a demo video. The browser handles dimming the page, trapping keyboard focus, and closing on **Esc**, so none of that is hand-written. Each page that needs one carries its own dialog (`#certDialog` on the home page, `#videoDialog` on My Work), and the matching `app/script.js` block does nothing on pages without it (`if (dialog) { … }`).
+
+```html
+<dialog class="media-dialog media-dialog--portrait" id="videoDialog" aria-label="Demo video">
+  <form method="dialog">
+    <button class="media-dialog-close" aria-label="Close video">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </form>
+  <video id="videoDialogPlayer" controls loop playsinline preload="none" poster="assets/projects/poster.webp"></video>
+</dialog>
+```
+For an image, swap the `<video>` for `<img id="certDialogImg" src="" alt="">` and drop `media-dialog--portrait` (a tall video gets a narrow dialog; a wide certificate gets the wide default).
+```css
+.media-dialog {
+  width: min(92vw, 1100px);
+  padding: 0;
+  color: var(--text);
+  background: var(--bg-elevated);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.media-dialog::backdrop { background: rgba(0, 8, 20, 0.8); }
+.media-dialog img { width: 100%; height: auto; max-height: 92vh; object-fit: contain; }
+.media-dialog-close {
+  position: absolute; top: 12px; right: 12px;
+  display: flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 999px;
+  border: 1px solid var(--card-border); background: var(--bg-elevated); color: var(--text); cursor: pointer;
+}
+.media-dialog-close svg { width: 20px; height: 20px; }
+.media-dialog--portrait { width: min(92vw, 420px); }
+.media-dialog video { display: block; width: 100%; height: auto; max-height: 88vh; background: var(--ink); }
+```
+How it behaves:
+- `showModal()` opens it (the thumbnail's click handler does this). The close button sits in a `<form method="dialog">`, so it closes the dialog without any JavaScript.
+- `padding: 0` means the only way to click the dialog element itself is the dark area outside the content, so `if (e.target === dialog) dialog.close()` closes on a backdrop click.
+- For video, a `close` listener pauses it and clears its `src`, so it stops no matter how the dialog was closed.
+- `preload="none"` means the video file isn't downloaded until someone opens it.
+
+**Accessibility:** give every dialog an `aria-label`, and give the close button its own `aria-label`. Keyboard users can reach the thumbnail, open the dialog with **Enter**, and close it with **Esc**. Focus returns to the thumbnail afterward.
+
+### Swipe grid (mobile carousel)
+Adds `swipe-grid` next to `card-grid` to turn a row of cards into a horizontal swipe carousel on phones. It's CSS scroll-snap only, so no JavaScript and no library. It works for any cards: certificates, testimonials, projects. At 700px and wider it does nothing, and the normal grid takes over.
+```html
+<div class="card-grid cols-3 swipe-grid">
+  <article class="card">…</article>
+  <article class="card">…</article>
+</div>
+```
+```css
+@media (max-width: 699px) {
+  .swipe-grid {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-block: 8px 16px;
+  }
+  .swipe-grid > .card { flex: 0 0 85%; scroll-snap-align: start; }
+  .swipe-grid > .card:only-child { flex-basis: 100%; }
+}
+```
+How it behaves:
+- Cards are 85% wide, so a sliver of the next one peeks in. That sliver is the cue that you can swipe.
+- `scroll-snap-type: x mandatory` makes each swipe settle on a card instead of stopping halfway.
+- `:only-child` makes a lone card fill the full width, so it looks right while you only have one, and switches to the carousel layout automatically once you add a second.
+- `padding-block` gives the cards' hover lift and shadow room, because a scrolling container clips anything that sticks out of it.
+
+**Accessibility:** the row scrolls with a finger, a trackpad or the keyboard (focus a card's link or button and keep tabbing). Keep real text in every card so it doesn't depend on swiping to be understood.
+
+### Testimonial card (+ Read more toggle)
+A `.card` built from a `<figure>`, so a screen reader announces the quote and who said it. Long quotes show an opening excerpt, and a **Read more** button reveals the rest. Opening one card closes the others (accordion), and closing a card scrolls it back into view so the page doesn't jump.
+```html
+<div class="card-grid swipe-grid cols-3">
+  <figure class="card testimonial-card">
+    <blockquote>
+      <p>The opening of the quote, always visible.</p>
+      <div class="testimonial-more" id="quote-1-more" hidden>
+        <p>The rest of the quote, revealed by the button.</p>
+      </div>
+    </blockquote>
+    <button type="button" class="card-link testimonial-toggle" aria-expanded="false" aria-controls="quote-1-more">Read more</button>
+    <figcaption>
+      <strong>Name</strong>
+      <span>Role, Company</span>
+    </figcaption>
+  </figure>
+</div>
+```
+A short quote skips the `.testimonial-more` block and the button entirely.
+```css
+.testimonial-card { margin: 0; scroll-margin-top: calc(var(--nav-h) + 16px); }
+.testimonial-card blockquote { margin: 0; display: flex; flex-direction: column; gap: 14px; }
+.testimonial-toggle { background: none; border: 0; padding: 0; cursor: pointer; align-self: flex-start; }
+.testimonial-card figcaption {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+.testimonial-card figcaption strong { font-family: var(--font-display); color: var(--text); }
+.testimonial-more p + p { margin-top: 14px; }
+/* While a quote is expanded, cards keep their own height instead of stretching to match */
+.card-grid:has(.testimonial-toggle[aria-expanded="true"]) { align-items: start; }
+```
+```js
+var toggles = document.querySelectorAll('.testimonial-toggle');
+
+function setExpanded(btn, open) {
+  btn.setAttribute('aria-expanded', String(open));
+  btn.textContent = open ? 'Read less' : 'Read more';
+  document.getElementById(btn.getAttribute('aria-controls')).hidden = !open;
+}
+
+toggles.forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var open = btn.getAttribute('aria-expanded') !== 'true';
+    toggles.forEach(function (other) { setExpanded(other, false); });
+    setExpanded(btn, open);
+    if (!open) {
+      btn.closest('.testimonial-card').scrollIntoView({ block: 'nearest', behavior: 'instant' });
+    }
+  });
+});
+```
+How it behaves:
+- `margin: 0` on the card and blockquote removes the browser's default 40px side margins, which otherwise squeeze the text into a narrow column.
+- The button reuses `.card-link` for its look. `.testimonial-toggle` only strips the browser's default button styling.
+- `scrollIntoView` uses `behavior: 'instant'` because the site turns on smooth scrolling, and a smooth scroll after the page shrinks makes the screen visibly jump twice. `scroll-margin-top` keeps the sticky header from covering the card.
+- `setExpanded` is written once and used for both opening and closing, so the label, `aria-expanded` and the hidden text can't get out of sync.
+
+**Accessibility:** a real `<button>` with `aria-expanded` and `aria-controls` is announced as "collapsed" or "expanded" and works with **Enter** and **Space**. The extra text uses the `hidden` attribute, so it's out of the reading order until opened. Always keep the full quote in the HTML, never in an image.
+
+### Certificate card (repeatable)
+A `.card` for one certification, built from pieces documented above: a **media thumbnail**, the **card tag**, **chips**, and a **card link**. Nothing new in the CSS. To add another certificate, copy the whole `<article>` and change the text, the image and the link.
+```html
+<div class="card-grid cols-3 swipe-grid">
+  <article class="card cert-card">
+    <button type="button" class="media-thumb" aria-label="View full-size certificate: Course title">
+      <img src="assets/certifications/file.png" width="1600" height="1190" loading="lazy"
+           alt="Issuer certificate of completion for Course title, taught by Instructor, awarded to Name on date.">
+    </button>
+    <span class="card-tag">Issuer</span>
+    <h3>Course title</h3>
+    <p>Instructor: Name. One line on what it covers and why it matters.</p>
+    <div class="card-meta">
+      <span class="chip"><time datetime="2023-02-01">Feb 1, 2023</time></span>
+      <span class="chip">17 hours</span>
+    </div>
+    <a class="card-link" href="https://issuer.example/verify/ID" target="_blank" rel="noopener noreferrer">
+      Verify credential <span class="visually-hidden">(opens in a new tab)</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </article>
+</div>
+```
+Notes:
+- `cert-card` is a hook class with no CSS of its own. It lets you target certificate cards later without touching other cards.
+- The thumbnail opens the image dialog (`#certDialog`, see **Media dialog**). `app/script.js` copies the thumbnail's `src` and `alt` into it, so the full-size view always matches the card.
+- `swipe-grid` makes the row a swipeable carousel on phones, and `:only-child` keeps a single certificate full-width until you add more.
+- `<time datetime="YYYY-MM-DD">` gives the date in a machine-readable form while the chip shows a friendly one.
+
+**Accessibility:** title, issuer, date and hours are real HTML text, so the card makes sense without the image. The image's `alt` describes the certificate itself, and the button's `aria-label` says the action. The external link carries a visually hidden "(opens in a new tab)" so screen reader users know what to expect.
+
 ### Nav underline (the shared `.nav-item` component)
 This is the one worth understanding well — it's used by **both** the desktop nav and the footer link columns, so the hover/focus/active behavior only has to be written once.
 
