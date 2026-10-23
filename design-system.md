@@ -211,7 +211,7 @@ Use **one primary button per view at most** — it should be obvious which actio
 ### Chips
 Small pills for tags, skills, and metadata.
 ```html
-<span class="chip">Custom AI Agents</span>
+<span class="chip">Front-End Development</span>
 ```
 ```css
 .chip {
