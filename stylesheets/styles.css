@@ -400,7 +400,7 @@
     gap: 40px;
   }
   .about-avatar-wrap { display: flex; justify-content: center; }
-  .avatar-placeholder {
+  .avatar {
     width: 220px; height: 220px;
     border-radius: 50%;
     background: linear-gradient(155deg, var(--oxford), var(--prussian));
