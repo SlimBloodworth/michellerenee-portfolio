@@ -299,9 +299,7 @@
         <p class="eyebrow">Contact</p>
         <h2>Let's talk.</h2>        
         <div class="contact-direct">
-          <!-- TODO: replace with Michelle's real contact email -->
-          <!--<a href="mailto:hello@michellerenee.dev</a>
-          <span style="color:var(--text-muted); font-size:0.92rem;">Usually replies within 2 business days</span>-->
+          <!-- TODO: replace with n8n automation lead capture and response -->
         </div>
       </div>
  
@@ -318,7 +316,13 @@
           <label for="message">How can I be of help? <span class="req">*</span></label>
           <textarea id="message" name="message" required></textarea>
         </div>
-        <p class="form-hint"><!--This opens a message in your email app addressed to Michelle -—> nothing is sent from this page. TODO: swap for a hosted form service (e.g. Formspree) when going live -->nothing is sent from this page.</p>
+                <div hidden>
+          <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="form-field">
+          <div class="h-captcha" data-captcha="true"></div>
+        </div>
+        <p class="form-hint">Your message will be sent securely and I'll only use your details to reply. I usually respond within 24&ndash;48 hours.</p>        
         <button type="submit" class="btn btn-primary">Send message</button>
         <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
       </form>
@@ -398,6 +402,7 @@
 </footer>
     <!-- ^^ END FOOTER -->
      <!-- JS-SCRIPT -->
+    <script src="https://web3forms.com/client/script.js" async defer></script>
     <script src="app/script.js"></script> 
 </body>
 </html>

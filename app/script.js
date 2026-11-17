@@ -110,37 +110,117 @@
       observer.observe(contactSection);
     }
  
-    /* ---------- CONTACT FORM ---------- */
-    var form = document.getElementById('contactForm');
-    var status = document.getElementById('formStatus');
- 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var name = form.name.value.trim();
-      var email = form.email.value.trim();
-      var message = form.message.value.trim();
-      var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
- 
-      if (!name || !email || !message) {
-        status.textContent = 'Please fill in every field before sending.';
-        status.className = 'form-status is-error';
-        return;
-      }
-      if (!emailPattern.test(email)) {
-        status.textContent = 'That email address doesn\'t look quite right.';
-        status.className = 'form-status is-error';
-        return;
-      }
- 
-      // TODO: replace this mailto handoff with a real form backend (Formspree, Netlify Forms, etc.)
-      var subject = encodeURIComponent('New project inquiry from ' + name);
-      var body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
-      window.location.href = 'mailto:name@example.com?subject=' + subject + '&body=' + body;
- 
-      status.textContent = 'Opening your email app to send this to Michelle…';
-      status.className = 'form-status is-success';
-    });
+   
+        /* ---------- CONTACT FORM ---------- */
+    // Everything you might change later lives in these four lines.
+    var FORM_ENDPOINT = 'https://api.web3forms.com/submit';
+    var FORM_ACCESS_KEY = '1e12ca83-690b-402e-ad85-af7fcc204876';
+    var EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var THANK_YOU = 'Thank you for reaching out! Your message is on its way, and I\'ll be in touch within 24–48 hours.';
 
+    function initContactForm(formEl, statusEl) {
+      var submitButton = formEl.querySelector('button[type="submit"]');
+      var idleLabel = submitButton ? submitButton.textContent : 'Send message';
+      var isSending = false;
+
+      function showStatus(message, type) {
+        statusEl.textContent = message;
+        statusEl.className = type ? 'form-status ' + type : 'form-status';
+      }
+
+      function setSending(sending) {
+        isSending = sending;
+        if (!submitButton) { return; }
+        if (sending) {
+          submitButton.setAttribute('aria-disabled', 'true');
+        } else {
+          submitButton.removeAttribute('aria-disabled');
+        }
+        submitButton.textContent = sending ? 'Sending...' : idleLabel;
+      }
+
+      formEl.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (isSending) { return; }
+
+        var data = Object.fromEntries(new FormData(formEl));
+        var name = (data.name || '').trim();
+        var email = (data.email || '').trim();
+        var message = (data.message || '').trim();
+
+        // Honeypot: real visitors never see this checkbox. If it is checked,
+        // act like it worked but send nothing.
+        if (data.botcheck) {
+          showStatus(THANK_YOU, 'is-success');
+          formEl.reset();
+          return;
+        }
+
+        if (!name || !email || !message) {
+          showStatus('Please fill in every field before sending.', 'is-error');
+          return;
+        }
+        if (!EMAIL_PATTERN.test(email)) {
+          showStatus('That email address doesn\'t look quite right.', 'is-error');
+          return;
+        }
+
+        // hCaptcha adds a hidden field named h-captcha-response once solved.
+        var captchaField = formEl.querySelector('[name="h-captcha-response"]');
+        if (captchaField && !captchaField.value) {
+          showStatus('Please complete the captcha check before sending.', 'is-error');
+          return;
+        }
+
+        data.name = name;
+        data.email = email;
+        data.message = message;
+        data.access_key = FORM_ACCESS_KEY;
+        data.subject = 'New portfolio inquiry from ' + name;
+        data.from_name = 'Portfolio contact form';
+
+        setSending(true);
+        showStatus('Sending your message...', '');
+
+        fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data)
+        })
+          .then(function (response) {
+            return response.json().then(function (result) {
+              return { ok: response.ok, result: result };
+            });
+          })
+          .then(function (outcome) {
+            if (outcome.ok) {
+              showStatus(THANK_YOU, 'is-success');
+              formEl.reset();
+            } else {
+              console.error('Form service error:', outcome.result);
+              showStatus('Sorry, something went wrong and your message was not sent. Please try again in a moment.', 'is-error');
+            }
+          })
+          .catch(function (error) {
+            console.error('Form network error:', error);
+            showStatus('Network problem. Please check your connection and try again.', 'is-error');
+          })
+          .then(function () {
+            setSending(false);
+            // A captcha answer works only once, so clear the box for the next try.
+            if (window.hcaptcha && typeof window.hcaptcha.reset === 'function') {
+              window.hcaptcha.reset();
+            }
+          });
+      });
+    }
+
+    var contactForm = document.getElementById('contactForm');
+    var contactStatus = document.getElementById('formStatus');
+    if (contactForm && contactStatus) {
+      initContactForm(contactForm, contactStatus);
+    }
+    
         /* ---------- CERTIFICATE VIEWER ---------- */
     var certDialog = document.getElementById('certDialog');
 
